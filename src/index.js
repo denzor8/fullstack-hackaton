@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
 
-import './index.css';
+import './styles/index.css';
+import './styles/adaptive.css'
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

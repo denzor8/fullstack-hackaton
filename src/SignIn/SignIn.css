@@ -1,51 +1,7 @@
 body {
 	justify-content: center;
 }
-.wrapper {
-	display: flex;
-	height: 100vh;
-}
-.aboutSide {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* background-color: #1976d2; */
-	background-color: #3aa2f2;
-	flex: 0 0 50%;
-}
-.loginSide {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 0 0 50%;
-}
-.loginSideIcon {
-	font-size: 50px !important;
-}
-.loginSideWrapper {
-	width: 380px ;
-}
-.aboutSideWrapper {
-	width: 380px;
-}
+
 .aboutSideWrapper > ul > li {
 	list-style-type: none;
-}
-.loginSideTitle {
-	font-weight: 700 !important;
-	font-size: 50px  !important;
-	margin-top: 20px !important;
-	margin-bottom: 50px !important;
-}
-.aboutSideListItem {
-	display: flex;
-	align-items: center;
-	font-weight: 700 !important;
-	color: white ;
-	margin-bottom: 20px !important;
-}
-.aboutSideListItemIcon {
-	margin-right: 10px !important;
-	font-size: 35px !important;
-	margin-bottom: 10px !important;
 }
