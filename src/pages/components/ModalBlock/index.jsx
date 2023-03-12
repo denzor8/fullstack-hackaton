@@ -1,18 +1,38 @@
-import React from 'react';
-import { DialogContent ,Dialog,DialogTitle,DialogContentText } from '@mui/material';
+import React, { useState } from 'react'
+import CloseIcon from '@mui/icons-material/Close';
+import {
+    Dialog,
+    DialogTitle,
+    IconButton,
+    DialogContent,
+} from "@mui/material";
 
 
+export const ModalBlock = ({
+    title,
+    onClose,
+    visible = false,
+    children,
+}) => {
+    if (!visible) {
+        return null;
+    }
 
-export const ModalBlock = ({ dialogTitle, title, children, visible = false, onClose }) => {
     return (
-        <Dialog open={visible} onClose={onClose} ariaLabelledBy="form-dialog-title">
-            <DialogTitle id="form-dialog-title">{dialogTitle}</DialogTitle>
+        <Dialog open={visible} onClose={onClose} aria-label="position">
+            <DialogTitle id="form-dialog-title">
+                <IconButton
+                    onClick={onClose}
+                    color="secondary"
+                    aria-label="close"
+                >
+                    <CloseIcon style={{ fontSize: 26 }} color="secondary" />
+                </IconButton>
+                {title}
+            </DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    {title}
-                </DialogContentText>
+                {children}
             </DialogContent>
-            {children}
         </Dialog>
-    );
+    )
 }
