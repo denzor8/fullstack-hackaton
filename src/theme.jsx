@@ -30,7 +30,7 @@ export const theme = createTheme({
       default: '#fff',
     },
   },
-  shadows: [],
+  // shadows: [],
   overrides: {
     MuiButton: {
       root: {

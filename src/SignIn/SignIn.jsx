@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-
-import { Button, Typography, makeStyles } from "@mui/material";
+import { Typography,
+  Button,
+  FormControl,
+  FormGroup,
+  TextField,
+  Theme,
+} from "@mui/material";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import SearchIcon from '@mui/icons-material/Search';
-// import { ModalBlock } from '../pages/components/ModalBlock';
-import TextField from '@mui/material/TextField';
+import { ModalBlock } from '../pages/components/ModalBlock';
 import PeopleIcon from '@mui/icons-material/People';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
-import { DialogActions, DialogContent } from '@mui/material';
 import './SignIn.css'
 
 
@@ -87,6 +90,7 @@ function SignIn() {
           >
             Зарегистрироваться
           </Button>
+
           <Button
             onClick={handleClickOpenSignIn}
             style={{
@@ -98,77 +102,91 @@ function SignIn() {
           >
             Войти
           </Button>
-          {/* <ModalBlock
-                        visible={visibleModal === 'signUp'}
-                        onClose={handleCloseModal}
-                        // classes={classes}
-                        dialogTitle="Зарегистрироваться"
-                        title="Создайте учетную запись">
-                        <DialogContent>
-                            <TextField
-                                autoFocus
-                                margin="dense"
-                                id="name"
-                                label="Имя"
-                                type="text"
-                                fullWidth
-                            />
-                            <TextField
-                                margin="dense"
-                                id="email"
-                                label="Почта"
-                                type="email"
-                                fullWidth
-                            />
-                            <TextField
-                                margin="dense"
-                                id="password"
-                                label="Пароль"
-                                type="password"
-                                fullWidth
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleCloseModal} color="primary">
-                                Отмена
-                            </Button>
-                            <Button onClick={handleCloseModal} color="primary">
-                                Далее
-                            </Button>
-                        </DialogActions>
-                    </ModalBlock> */}
-          {/* <ModalBlock
-                        visible={visibleModal === 'signIn'}
-                        onClose={handleCloseModal}
-                        // classes={classes}
-                        dialogTitle="Войти"
-                        title="Введите ваши данные">
-                        <DialogContent>
-                            <TextField
-                                autoFocus
-                                margin="dense"
-                                id="email"
-                                label="Почта"
-                                type="email"
-                                fullWidth
-                            />
-                            <TextField
-                                margin="dense"
-                                id="password"
-                                label="Пароль"
-                                type="password"
-                                fullWidth
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleCloseModal} color="primary">
-                                Отмена
-                            </Button>
-                            <Button onClick={handleCloseModal} color="primary">
-                                Войти
-                            </Button>
-                        </DialogActions>
-                    </ModalBlock> */}
+
+          <ModalBlock visible={visibleModal === 'signIn'} onClose={handleCloseModal} title="Войти в аккаунт">
+            <FormControl
+              sx={{marginBottom: '2px'}}
+              // component="fieldset"
+              fullWidth >
+              <FormGroup aria-label="position" row>
+                <TextField
+                  sx={{marginBottom: '5px'}}
+                  autoFocus
+                  id="email"
+                  label="E-Mail"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="email"
+                  fullWidth
+                />
+                <TextField
+                  sx={{marginBottom: '18px'}}
+                  autoFocus
+                  id="password"
+                  label="Password"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  fullWidth
+                />
+                <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth >Войти</Button>
+                <br/>
+                <br/>
+              </FormGroup>
+            </FormControl>
+          </ModalBlock>
+
+          <ModalBlock visible={visibleModal === 'signUp'} onClose={handleCloseModal} title="Создайте учетную запись">
+            <FormControl
+              sx={{marginBottom: '2px'}}
+              component="fieldset"
+              fullWidth >
+              <FormGroup aria-label="position" row>
+                <TextField
+                  sx={{marginBottom: '5px'}}
+                  autoFocus
+                  id="name"
+                  label="Имя"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="name"
+                  fullWidth
+                />
+                <TextField
+                  sx={{marginBottom: '5px'}}
+                  autoFocus
+                  id="email"
+                  label="E-Mail"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="email"
+                  fullWidth
+                />
+                <TextField
+                  sx={{marginBottom: '5px'}}
+                  autoFocus
+                  id="password"
+                  label="Password"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  fullWidth
+                />
+                <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth >Далее</Button>
+              </FormGroup>
+            </FormControl>
+          </ModalBlock>
+
         </div>
       </section>
     </div>
