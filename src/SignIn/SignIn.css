@@ -1,0 +1,46 @@
+body{
+	justify-content: center ;
+}
+.wrapper{
+	display: flex;
+	height: 100vh;
+}
+.aboutSide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #3f51b5;
+	flex: 0 0 50%;
+}
+.loginSide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 0 0 50%;
+}
+.loginSideIcon{
+	font-size: 50px;
+}
+.loginSideWrapper {
+	width: 380px;
+}
+.aboutSideWrapper {
+	width: 380px;
+}
+.loginSideTitle {
+	font-weight: 700;
+	font-size: 50px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+.aboutSideListItem {
+	display: flex;
+	align-items: center;
+	font-weight: 700;
+	color: white;
+	margin-bottom: 20px;
+}
+.aboutSideListItemIcon {
+	margin-right: 10px;
+	font-size: 35px;
+}
