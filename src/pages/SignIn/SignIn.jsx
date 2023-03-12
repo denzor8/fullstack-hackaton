@@ -8,7 +8,7 @@ import { Typography,
 } from "@mui/material";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import SearchIcon from '@mui/icons-material/Search';
-import { ModalBlock } from '../components/ModalBlock';
+import { ModalBlock } from '../../components/ModalBlock';
 import PeopleIcon from '@mui/icons-material/People';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import './SignIn.css'
