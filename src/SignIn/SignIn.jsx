@@ -43,7 +43,7 @@ function SignIn() {
             </li>
             <li>
               <Typography
-                variant="h5"
+                variant="h6"
                 className="aboutSideListItem">
                 <PeopleIcon
                   className="aboutSideListItemIcon"
