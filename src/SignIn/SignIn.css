@@ -9,7 +9,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #1976d2;
+	/* background-color: #1976d2; */
+	background-color: #3aa2f2;
 	flex: 0 0 50%;
 }
 .loginSide {

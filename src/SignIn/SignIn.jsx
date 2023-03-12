@@ -77,17 +77,25 @@ function SignIn() {
           <br />
           <Button
             onClick={handleClickOpenSignUp}
-            style={{ marginBottom: 20 }}
+            style={{
+              marginBottom: 20,
+              borderRadius: 20,
+            }}
             variant="contained"
             color="primary"
-            fullWidth>
+            fullWidth
+          >
             Зарегистрироваться
           </Button>
           <Button
             onClick={handleClickOpenSignIn}
+            style={{
+              borderRadius: 20,
+            }}
             variant="outlined"
             color="primary"
-            fullWidth>
+            fullWidth
+          >
             Войти
           </Button>
           {/* <ModalBlock
