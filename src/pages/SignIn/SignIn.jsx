@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Typography,Button,FormControl,FormGroup,TextField,Theme,} from "@mui/material";
+import { Typography, Button, FormControl, FormGroup, TextField, Theme, } from "@mui/material";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import SearchIcon from '@mui/icons-material/Search';
 import { ModalBlock } from '../../components/ModalBlock';
@@ -24,10 +24,11 @@ function SignIn() {
   };
 
   const { handleRegister, setError } = useContext(authContext);
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [name, setName] = useState([])
+  const [email, setEmail] = useState([]);
+  const [password, setPassword] = useState([]);
+  const [passwordConfirm, setPasswordConfirm] = useState([]);
+  const [data, setData] = useState([]);
 
 
   useEffect(() => {
@@ -35,15 +36,16 @@ function SignIn() {
   }, []);
 
   function handleSave() {
-    if(!email.trim() || !password.trim() || !passwordConfirm.trim() || !email.trim()) {
+    if (!email.trim() || !password.trim() || !passwordConfirm.trim() || !email.trim()) {
       alert('Some inputs are empty!');
       return;
     };
     let formData = new FormData();
-    formData.append('name', name);
     formData.append('email', email);
+    formData.append('username', name);
     formData.append('password', password);
-    formData.append('password_confirm', passwordConfirm);
+    formData.append('password2', passwordConfirm);
+    formData.append('date_of_birth', data);
     handleRegister(formData);
     handleCloseModal()
   };
@@ -129,12 +131,12 @@ function SignIn() {
 
           <ModalBlock visible={visibleModal === 'signIn'} onClose={handleCloseModal} title="Войти в аккаунт">
             <FormControl
-              sx={{marginBottom: '2px'}}
+              sx={{ marginBottom: '2px' }}
               // component="fieldset"
               fullWidth >
               <FormGroup aria-label="position" row>
                 <TextField
-                  sx={{marginBottom: '5px'}}
+                  sx={{ marginBottom: '5px' }}
                   autoFocus
                   id="email"
                   label="E-Mail"
@@ -144,10 +146,10 @@ function SignIn() {
                   variant="filled"
                   type="email"
                   fullWidth
-                  
+
                 />
                 <TextField
-                  sx={{marginBottom: '18px'}}
+                  sx={{ marginBottom: '18px' }}
                   autoFocus
                   id="password"
                   label="Password"
@@ -157,23 +159,23 @@ function SignIn() {
                   variant="filled"
                   type="password"
                   fullWidth
-                  
+
                 />
                 <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth >Войти</Button>
-                <br/>
-                <br/>
+                <br />
+                <br />
               </FormGroup>
             </FormControl>
           </ModalBlock>
 
           <ModalBlock visible={visibleModal === 'signUp'} onClose={handleCloseModal} title="Создайте учетную запись">
             <FormControl
-              sx={{marginBottom: '2px'}}
+              sx={{ marginBottom: '2px' }}
               component="fieldset"
               fullWidth >
               <FormGroup aria-label="position" row>
                 <TextField
-                  sx={{marginBottom: '5px'}}
+                  sx={{ marginBottom: '5px' }}
                   autoFocus
                   id="name"
                   label="Имя"
@@ -186,7 +188,7 @@ function SignIn() {
                   onChange={(e) => setName(e.target.value)}
                 />
                 <TextField
-                  sx={{marginBottom: '5px'}}
+                  sx={{ marginBottom: '5px' }}
                   autoFocus
                   id="email"
                   label="E-Mail"
@@ -199,7 +201,7 @@ function SignIn() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
-                  sx={{marginBottom: '5px'}}
+                  sx={{ marginBottom: '5px' }}
                   autoFocus
                   id="password"
                   label="Password"
@@ -211,8 +213,8 @@ function SignIn() {
                   fullWidth
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                 <TextField
-                  sx={{marginBottom: '5px'}}
+                <TextField
+                  sx={{ marginBottom: '5px' }}
                   autoFocus
                   id="con-password"
                   label="Confirm Password"
@@ -223,6 +225,23 @@ function SignIn() {
                   type="password"
                   fullWidth
                   onChange={(e) => setPasswordConfirm(e.target.value)}
+                />
+                <TextField
+                  sx={{ marginBottom: '5px' }}
+                  autoFocus
+                  label="Data"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="date"
+                  id="start"
+                  name="trip-start"
+                  // value="2018-07-22"
+                  min="2023-01-01"
+                  max="2023-12-31"
+                  fullWidth
+                  onChange={(e) => setData(e.target.value)}
                 />
                 <Button onClick={handleSave} variant="contained" color="primary" fullWidth >Далее</Button>
               </FormGroup>

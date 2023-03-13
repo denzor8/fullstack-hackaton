@@ -10,16 +10,15 @@ import AuthContextProvider from './contexts/authContext';
 const MainRoutes = () => {
 	return (
 		<>
-		<AuthContextProvider>
-			<Routes>
-				<Route path='/' element={
-				<div style={{display: 'flex', alignItems: 'center'}} >
-					<Navbar/>
-					<ProductsListPage/>
-				</div> }  />
-				<Route path='/signIn' element={ <SignIn/> } />
-			</Routes>
-		</AuthContextProvider>
+			<AuthContextProvider>
+				{/* <div style={{ display: 'flex', alignItems: 'center' }} > */}
+						<Navbar />
+					<Routes>
+						<Route path='/' element={<ProductsListPage />} />
+						<Route path='/signIn' element={<SignIn />} />
+					</Routes>
+				{/* </div> */}
+			</AuthContextProvider>
 		</>
 	);
 }
