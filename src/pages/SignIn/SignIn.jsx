@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
-import { Typography,
-  Button,
-  FormControl,
-  FormGroup,
-  TextField,
-  Theme,
-} from "@mui/material";
+import React, { useContext, useEffect, useState } from 'react';
+import { Typography,Button,FormControl,FormGroup,TextField,Theme,} from "@mui/material";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import SearchIcon from '@mui/icons-material/Search';
 import { ModalBlock } from '../../components/ModalBlock';
 import PeopleIcon from '@mui/icons-material/People';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
-import './SignIn.css'
+import './SignIn.css';
+import { useNavigate } from 'react-router-dom';
+import { authContext } from '../../contexts/authContext';
 
 
 function SignIn() {
+  const navigate = useNavigate();
   const [visibleModal, setVisibleModal] = useState('');
   const handleClickOpenSignIn = () => {
     setVisibleModal('signIn');
@@ -25,6 +22,33 @@ function SignIn() {
   const handleCloseModal = () => {
     setVisibleModal('');
   };
+
+  const { handleRegister, setError } = useContext(authContext);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
+
+  useEffect(() => {
+    setError(false);
+  }, []);
+
+  function handleSave() {
+    if(!email.trim() || !password.trim() || !passwordConfirm.trim() || !email.trim()) {
+      alert('Some inputs are empty!');
+      return;
+    };
+    let formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('password_confirm', passwordConfirm);
+    handleRegister(formData);
+    handleCloseModal()
+  };
+
+
 
   return (
     <div className="wrapper">
@@ -120,6 +144,7 @@ function SignIn() {
                   variant="filled"
                   type="email"
                   fullWidth
+                  
                 />
                 <TextField
                   sx={{marginBottom: '18px'}}
@@ -132,6 +157,7 @@ function SignIn() {
                   variant="filled"
                   type="password"
                   fullWidth
+                  
                 />
                 <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth >Войти</Button>
                 <br/>
@@ -157,6 +183,7 @@ function SignIn() {
                   variant="filled"
                   type="name"
                   fullWidth
+                  onChange={(e) => setName(e.target.value)}
                 />
                 <TextField
                   sx={{marginBottom: '5px'}}
@@ -169,6 +196,7 @@ function SignIn() {
                   variant="filled"
                   type="email"
                   fullWidth
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                   sx={{marginBottom: '5px'}}
@@ -181,11 +209,26 @@ function SignIn() {
                   variant="filled"
                   type="password"
                   fullWidth
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth >Далее</Button>
+                 <TextField
+                  sx={{marginBottom: '5px'}}
+                  autoFocus
+                  id="con-password"
+                  label="Confirm Password"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  fullWidth
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                />
+                <Button onClick={handleSave} variant="contained" color="primary" fullWidth >Далее</Button>
               </FormGroup>
             </FormControl>
           </ModalBlock>
+
 
         </div>
       </section>
