@@ -1,5 +1,6 @@
 .card {
     width: 600px;
+    margin: 0 auto;
 }
 .card_title {
     font-size: 19px;
