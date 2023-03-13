@@ -1,11 +1,11 @@
 import React from 'react'
+import MainRoutes from './MainRoutes';
 // pages
-import SignIn from './pages/SignIn/SignIn';
 
 function App() {
   return (
     <div className="App">
-        <SignIn/>
+        <MainRoutes/>
     </div>
   );
 }
