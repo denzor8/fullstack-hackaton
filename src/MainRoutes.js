@@ -8,7 +8,7 @@ import ProductsListPage from './pages/ProductListPage/ProductsListPage';
 
 const MainRoutes = () => {
 	return (
-		<div>
+		<>
 			<Routes>
 				<Route path='/' element={
 				<div style={{display: 'flex', alignItems: 'center'}} >
@@ -17,7 +17,7 @@ const MainRoutes = () => {
 				</div> }  />
 				<Route path='/signIn' element={ <SignIn/> } />
 			</Routes>
-		</div>
+		</>
 	);
 }
 
