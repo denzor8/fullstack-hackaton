@@ -1,28 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import Navbar from './components/Navbar';
+import ProductListPage  from './pages/ProductListPage';
 // pages 
-import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
-import LoginPage from './pages/LoginPage/LoginPage';
 import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home/Home';
 
 const MainRoutes = () => {
 	const PUBLIC_ROUTES = [
 		{
-			link: "/register",
-			element: <RegistrationPage />,
-			id: 1,
-		},
-		{
-			link: "/login",
-			element: <LoginPage />,
-			id: 2,
-		},
-		{
 			link: "/*",
 			element: <NotFound />,
-			id: 3,
+			id: 1,
 		},
 	]
 	return (
@@ -30,6 +19,14 @@ const MainRoutes = () => {
 			{PUBLIC_ROUTES.map((item) => (
 				<Route path={item.link} element={item.element} key={item.id} />
 			))}
+			<div display={{
+				display: 'flex',
+				justifyContent: "space-between",
+			}}>
+				<Navbar />
+				<ProductListPage />
+				
+			</div>
 		</Routes>
 	);
 }
