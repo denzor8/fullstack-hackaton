@@ -5,10 +5,12 @@ import NotFound from './pages/NotFound/NotFound';
 import Navbar from './components/Navbar/Navbar';
 import SignIn from './pages/SignIn/SignIn';
 import ProductsListPage from './pages/ProductListPage/ProductsListPage';
+import AuthContextProvider from './contexts/authContext';
 
 const MainRoutes = () => {
 	return (
 		<>
+		<AuthContextProvider>
 			<Routes>
 				<Route path='/' element={
 				<div style={{display: 'flex', alignItems: 'center'}} >
@@ -17,6 +19,7 @@ const MainRoutes = () => {
 				</div> }  />
 				<Route path='/signIn' element={ <SignIn/> } />
 			</Routes>
+		</AuthContextProvider>
 		</>
 	);
 }
