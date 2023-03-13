@@ -1,0 +1,54 @@
+.container_navbar {
+	width: 275px;
+	margin-left: 80px;
+	display: flex;
+	flex-direction: column;
+	& > div {
+		margin-left: 20px;
+	}
+	& > button {
+		color: #fff;
+		justify-content: center;
+		align-items: center;
+		padding: 15px 93px;
+		gap: 10px;
+		width: 228px;
+		height: 49px;
+		background: #1da1f2;
+		border-radius: 9999px;
+		margin-left: 10px;
+	}
+	& > .container_navbar__profile {
+		margin-top: 170px;
+		margin-bottom: 20px;
+	}
+}
+.twitter_icon-img {
+	margin-top: 15px;
+	margin-bottom: 32px;
+	color: #fff;
+}
+.homeIcon {
+	display: flex;
+	align-items: center;
+	& > img {
+		margin-right: 10px;
+	}
+	& > h6 {
+		color: white;
+	}
+}
+.twiiter_icons {
+	margin-bottom: 35px;
+}
+.card_user_icon {
+	width: 39px;
+	height: 39px;
+	left: 0px;
+	top: 10px;
+	border-radius: 99999px;
+}
+
+// .container_navbar__profile{
+// 	margin-top: 200px;
+// }
