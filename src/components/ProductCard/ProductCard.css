@@ -9,7 +9,9 @@
     margin-top: 10px;
 }
 .card_user_inp {
-    border: none;
+    width: 100%;
+    outline:none;
+    border: 0 solid #17202A;
     color: #5B7083;
     font-weight: 500;
     font-size: 20px;
