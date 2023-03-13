@@ -6,11 +6,14 @@ import { theme } from './theme';
 import './styles/index.css';
 import './styles/adaptive.css'
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <ThemeProvider theme={theme}>
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </ThemeProvider>
 );
 
