@@ -1,9 +1,142 @@
-import React from 'react';
-import './Navbar.css'
+import React from 'react'
+import {
+  Typography,
+  Button,
+  FormControl,
+  FormGroup,
+  TextField,
+  Theme,
+} from "@mui/material";
+// icons
+import Home from './img/home.png'
+import TwitterIcon from './img/twitter-icon.png'
+import icon from './img/notif.png'
+import icon1 from './img/mess.png'
+import icon2 from './img/book.png'
+import icon3 from './img/lists.png'
+import icon4 from './img/prof.png'
+import icon5 from './img/more.png'
+import icon6 from './img/profile.png'
+
+
+import './Navbar.scss'
 
 const Navbar = () => {
   return (
-    <div className='navbar' >Navbar</div>
+    <>
+      <div className='container_navbar'>
+        <div className=''>
+          <div className='twitter_icon-img'>
+            <img src={TwitterIcon} alt="" width={27} height={23} />
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={Home}
+                alt=""
+                width={27}
+                height={25} />
+              <Typography variant="h6" >
+                Home
+              </Typography>
+            </div>
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={icon}
+                alt=""
+                width={25}
+                height={25} />
+              <Typography variant="h6" >
+                Notifications
+              </Typography>
+            </div>
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={icon1}
+                alt=""
+                width={25}
+                height={22} />
+              <Typography variant="h6" >
+                Messages
+              </Typography>
+            </div>
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={icon2}
+                alt=""
+                width={25}
+                height={22} />
+              <Typography variant="h6" >
+                Bookmarks
+              </Typography>
+            </div>
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={icon3}
+                alt=""
+                width={25}
+                height={22} />
+              <Typography variant="h6" >
+                Lists
+              </Typography>
+            </div>
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={icon4}
+                alt=""
+                width={25}
+                height={22} />
+              <Typography variant="h6" >
+                Profile
+              </Typography>
+            </div>
+          </div>
+
+          <div className='twiiter_icons'>
+            <div className='d-flex homeIcon'>
+              <img
+                src={icon5}
+                alt=""
+                width={25}
+                height={22} />
+              <Typography variant="h6" >
+                More
+              </Typography>
+            </div>
+          </div>
+        </div>
+        <button>Tweet</button>
+        <div className='container_navbar__profile' style={{ display: 'flex', alignItems: 'center' }} >
+          <div>
+            <img src={icon6} alt="" className="card_user_icon" />
+          </div>
+
+          <div style={{ paddingLeft: '10px' }} >
+            <div>
+              <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
+              <h4 style={{ margin:1 ,color: '#8899A6' }} >@johndue 23</h4>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
