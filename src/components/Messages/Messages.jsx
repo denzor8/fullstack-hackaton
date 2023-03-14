@@ -33,7 +33,14 @@ const Messages = () => {
 
             </div>
            </div>
+           
+           <div className="mess-chat">
+              <div>
 
+            <img style={{width: '55px', height: '55px', display: 'flex', justifyContent: 'center'}} src="../../../image/user_icon-1 png" alt="" />
+          
+        </div>
+      </div>
 
       </div> 
     </div>
