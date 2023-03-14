@@ -6,18 +6,19 @@ import Navbar from './components/Navbar/Navbar';
 import SignIn from './pages/SignIn/SignIn';
 import ProductsListPage from './pages/ProductListPage/ProductsListPage';
 import AuthContextProvider from './contexts/authContext';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const MainRoutes = () => {
+	// const token = localStorage.getItem('token');
+	const token = true;
 	return (
 		<>
 			<AuthContextProvider>
-				{/* <div style={{ display: 'flex', alignItems: 'center' }} > */}
-						<Navbar />
-					<Routes>
-						<Route path='/' element={<ProductsListPage />} />
-						<Route path='/signIn' element={<SignIn />} />
-					</Routes>
-				{/* </div> */}
+				<Routes>
+					<Route path='/' element={token ? <ProductsListPage /> : <SignIn />} />
+					<Route path='/signIn' element={<SignIn />} />
+					<Route path='/profile' element={<ProfilePage />} />
+				</Routes>
 			</AuthContextProvider>
 		</>
 	);

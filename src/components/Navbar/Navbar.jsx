@@ -17,21 +17,27 @@ import icon3 from './img/lists.png'
 import icon4 from './img/prof.png'
 import icon5 from './img/more.png'
 import icon6 from './img/profile.png'
+//
+import {useNavigate} from 'react-router-dom'
 
 
 import './Navbar.scss'
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className='container_navbar'>
         <div className=''>
-          <div className='twitter_icon-img'>
+          <div className='twitter_icon-img cu-p'>
             <img src={TwitterIcon} alt="" width={27} height={23} />
           </div>
 
-          <div className='twiiter_icons'>
-            <div className='d-flex homeIcon'>
+          <div className='twiiter_icons cu-p'>
+            <div
+              className='d-flex homeIcon'
+              onClick={() => navigate('/')}
+            >
               <img
                 src={Home}
                 alt=""
@@ -43,7 +49,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons'>
+          <div className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
                 src={icon}
@@ -56,7 +62,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons'>
+          <div className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
                 src={icon1}
@@ -69,7 +75,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons'>
+          <div className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
                 src={icon2}
@@ -82,7 +88,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons'>
+          <div className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
                 src={icon3}
@@ -95,7 +101,10 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons'>
+          <div
+            onClick={() => navigate('/profile')}
+            className='twiiter_icons cu-p'
+          >
             <div className='d-flex homeIcon'>
               <img
                 src={icon4}
@@ -108,7 +117,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons'>
+          <div className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
                 src={icon5}
