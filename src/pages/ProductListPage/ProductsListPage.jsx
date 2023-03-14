@@ -6,7 +6,7 @@ const ProductsListPage = () => {
   return (
     <>
       <Navbar />
-      <div style={{display:'flex'}}>
+      <div style={{ display: 'flex' }}>
         <ProductList />
         <Search />
       </div>

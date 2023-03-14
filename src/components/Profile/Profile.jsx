@@ -3,6 +3,7 @@ import './Profile.scss'
 import prev from './img/prev.png'
 import profile from './img/profile.png'
 import bgc from './img/Placeholder.png'
+import '../../styles/index.scss'
 const Profile = () => {
 	return (
 		<div className='profile' >

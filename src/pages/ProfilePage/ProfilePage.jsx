@@ -2,6 +2,7 @@ import React from 'react'
 import Profile from '../../components/Profile/Profile'
 import Navbar from '../../components/Navbar/Navbar'
 import Search from '../../components/Search/Search'
+import '../../styles/index.scss'
 const ProfilePage = () => {
 	return (
 		<>

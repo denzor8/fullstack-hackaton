@@ -23,11 +23,14 @@ function SignIn() {
     setVisibleModal('');
   };
 
-  const { handleRegister, setError } = useContext(authContext);
-  const [name, setName] = useState([])
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
-  const [passwordConfirm, setPasswordConfirm] = useState([]);
+  const { handleRegister, handleLogin, setError } = useContext(authContext);
+  const [emailLog, setEmailLog] = useState('');
+  const [passwordLog, setPasswordLog] = useState('');
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [data, setData] = useState([]);
 
 
@@ -40,16 +43,26 @@ function SignIn() {
       alert('Some inputs are empty!');
       return;
     };
-    let formData = new FormData();
-    formData.append('email', email);
-    formData.append('username', name);
-    formData.append('password', password);
-    formData.append('password2', passwordConfirm);
-    formData.append('date_of_birth', data);
-    handleRegister(formData);
+    let obj = {
+      'email': email,
+      'login': name,
+      'password': password,
+      'password2': passwordConfirm,
+      'date_of_birth': data
+    }
+    handleRegister(obj);
     handleCloseModal()
+    handleClickOpenSignIn()
   };
 
+  // login 
+  function handleAuth() {
+    let obj = {
+      'email': emailLog,
+      'password': passwordLog
+    }
+    handleLogin(obj, emailLog, navigate);
+  };
 
 
   return (
@@ -143,6 +156,7 @@ function SignIn() {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  onChange={(e) => setEmailLog(e.target.value)}
                   variant="filled"
                   type="email"
                   fullWidth
@@ -156,12 +170,13 @@ function SignIn() {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  onChange={(e) => setPasswordLog(e.target.value)}
                   variant="filled"
                   type="password"
                   fullWidth
 
                 />
-                <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth >Войти</Button>
+                <Button onClick={handleAuth} variant="contained" color="primary" fullWidth >Войти</Button>
                 <br />
                 <br />
               </FormGroup>
