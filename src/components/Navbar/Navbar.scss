@@ -1,4 +1,4 @@
-.cu-p{
+.cu-p {
 	cursor: pointer;
 }
 .container_navbar {
@@ -35,6 +35,7 @@
 	margin-top: 10px;
 	margin-bottom: 23px;
 	color: #fff;
+	padding-left: 12px;
 }
 .homeIcon {
 	display: flex;
@@ -47,7 +48,19 @@
 	}
 }
 .twiiter_icons {
+	display: flex;
+	align-items: center;
+	height: 26px;
+	width: 177px;
+	padding: 12px;
 	margin-bottom: 35px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.2s;
+	border-radius: 30px;
+	
+	&:hover{
+		background: #888888;
+	}
 }
 .card_user_icon {
 	width: 39px;
@@ -60,3 +73,7 @@
 // .container_navbar__profile{
 // 	margin-top: 200px;
 // }
+
+.css-1oq25t-MuiButtonBase-root-MuiButton-root{
+	text-transform: none;
+}

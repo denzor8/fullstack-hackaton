@@ -1,10 +1,7 @@
-.p16 {
-	padding: 0 16px;
-}
 .card {
 	width: 600px;
 	margin: 0 auto;
-	// padding: 0 16px;
+	padding: 0 16px;
 	border-left: solid 1px #0f1419;
 	border-right: solid 1px #0f1419;
 }
@@ -17,13 +14,18 @@
 }
 .card_user_inp {
 	width: 100%;
-	outline: none;
+	outline: none !important;
 	border: 0 solid #17202a;
 	color: #5b7083;
 	font-weight: 500;
 	font-size: 20px;
 	padding-left: 1rem;
 	background-color: #17202a;
+	// color: #fff;
+
+	&:focus{
+		color: rgb(233, 231, 231);;
+	}
 }
 .card-sholder {
 	padding-left: 15px;
@@ -31,8 +33,10 @@
 .card_user_btn {
 	width: 77px;
 	height: 39px;
-	right: 0px;
-	top: 59px;
+	display: inline-flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 
 	/* Primary Blue */
 	border: none;
