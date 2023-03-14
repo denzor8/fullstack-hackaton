@@ -2,9 +2,10 @@
 	cursor: pointer;
 }
 .container_navbar {
+	margin-top: 15px;
 	position: fixed;
 	width: 275px;
-	margin-left: 80px;
+	margin-left: 90px;
 	display: flex;
 	flex-direction: column;
 	& > div {
@@ -31,7 +32,6 @@
 	}
 }
 .twitter_icon-img {
-	// margin-top: -80px;
 	margin-top: 10px;
 	margin-bottom: 23px;
 	color: #fff;

@@ -1,17 +1,17 @@
 import { display } from '@mui/system';
 import React from 'react';
-import './ProductCard.css'
+import './ProductCard.scss'
 
 const ProductCard = () => {
   return (
     <div className='card' >
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}} >
-          <h3 className='card_title'>Home</h3>
-          <img src="../../../image/Group.png" alt="" className="card_icon" />
-        </div>
-
-        <div className='small-scretch'></div>
-        <div className="card_user">
+          <h3 className='card_title p16'>Home</h3>
+          <img src="../../../image/Group.png" alt="" className="card_icon p16" />
+      </div>
+      {/* tweet */}
+        <div className='small-scretch'/>
+        <div className="card_user p16">
           <div style={{display: 'flex', alignItems: 'center'}} >
               <img src="../../../image/user_icon.png" alt="" className="card_user_icon" />
               <input className='card_user_inp' placeholder='What’s happening?' type="text" />
@@ -28,14 +28,15 @@ const ProductCard = () => {
 
             <button className='card_user_btn'>Tweet</button>
           </div>
-        </div>
+      </div>
+      {/* tweet  end*/}
 
         <div className='small-scretch'></div>
         <div className='strech' ></div>
         <div className='small-scretch-bottom'></div>
 
 
-        <div className="card_post">
+        <div className="card_post p16">
            <div style={{display: 'flex', alignItems: 'center'}} >
             <div>
               <img src="../../../image/user_icon-2.png" alt="" className="card_user_icon" />
@@ -75,7 +76,7 @@ const ProductCard = () => {
             <div className='small-scretch-bottom'></div>
         </div>
 
-        <div className="card_post">
+        <div className="card_post p16">
            <div style={{display: 'flex', alignItems: 'center'}} >
             <div>
               <img src="../../../image/user_icon-1.png" alt="" className="card_user_icon" />

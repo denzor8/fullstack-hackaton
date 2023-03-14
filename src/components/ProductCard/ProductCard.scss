@@ -1,18 +1,21 @@
-.profile {
+.p16 {
+	padding: 0 16px;
+}
+.card {
 	width: 600px;
 	margin: 0 auto;
-	padding: 0 15px;
-	border-left: solid 1px #0F1419;;
-	border-right: solid 1px #0F1419;;
+	// padding: 0 16px;
+	border-left: solid 1px #0f1419;
+	border-right: solid 1px #0f1419;
 }
-.profile_title {
+.card_title {
 	font-size: 19px;
 	color: white;
 }
-.profile_user {
+.card_user {
 	margin-top: 10px;
 }
-.profile_user_inp {
+.card_user_inp {
 	width: 100%;
 	outline: none;
 	border: 0 solid #17202a;
@@ -22,10 +25,10 @@
 	padding-left: 1rem;
 	background-color: #17202a;
 }
-.profile-sholder {
+.card-sholder {
 	padding-left: 15px;
 }
-.profile_user_btn {
+.card_user_btn {
 	width: 77px;
 	height: 39px;
 	right: 0px;
@@ -39,6 +42,8 @@
 	color: white;
 }
 .strech {
+	padding: 0;
+	margin: 0;
 	height: 10px;
 	background: #1c2733;
 	flex: none;
@@ -46,6 +51,7 @@
 	align-self: stretch;
 	flex-grow: 0;
 	border: #5b7083;
+	width: 100%;
 }
 .small-scretch-bottom {
 	background: #3a444c;
@@ -56,10 +62,10 @@
 	height: 1px;
 	margin-top: 10px;
 }
-.profile_post {
+.card_post {
 	padding-top: 1rem;
 }
-.profile-post_images {
+.card-post_images {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -67,42 +73,13 @@
 	margin: 0 auto;
 	padding-top: 10px;
 }
-.profile-post_span {
+.card-post_span {
 	color: #8899a6;
 	display: flex;
 	align-items: center;
 }
-.profile-post_span_like {
+.card-post_span_like {
 	color: #f4245e;
 	display: flex;
 	align-items: center;
 }
-.profile_icon {
-	margin-right: 35px;
-	& > img {
-		width: 100%;
-	}
-}
-
-.profile__name {
-	margin-top: 5px;
-}
-.profile__name-name {
-	font-weight: 700;
-	font-size: 19px;
-	line-height: 22px;
-	color: #fff;
-}
-.profile__name-tweet {
-	font-weight: 500;
-	font-size: 13px;
-	color: #8899a6;
-	line-height: 15px;
-}
-.profile__container {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	display: flex;
-	align-items: center;
-}
-
