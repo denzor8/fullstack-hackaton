@@ -4,9 +4,7 @@ import prev from './img/prev.png'
 import profile1 from './img/profile.png'
 import bgc from './img/Placeholder.png'
 import '../../styles/index.scss'
-import {
-	Button,
-} from "@mui/material";
+import {Button,} from "@mui/material";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
