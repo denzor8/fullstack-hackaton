@@ -18,11 +18,7 @@ const Profile = () => {
 				</div>
 			</div>
 
-			<div className='profile__parent'>
-				<div className='profile__child'>
-					{/* <img src={profile} alt="" /> */}
-				</div>
-			</div>
+			<img src="../../../Image/Container.png" alt="" />
 
 		</div>
 	)

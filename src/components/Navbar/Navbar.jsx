@@ -69,7 +69,7 @@ const Navbar = () => {
                 alt=""
                 width={25}
                 height={22} />
-              <Typography variant="h6" >
+              <Typography variant="h6" onClick={() => navigate('/message')} >
                 Messages
               </Typography>
             </div>
