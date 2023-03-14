@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const MainRoutes = () => {
 	// const token = localStorage.getItem('token');
+	// const token = false;
 	const token = true;
 	return (
 		<>
