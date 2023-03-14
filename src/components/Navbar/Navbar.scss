@@ -1,3 +1,6 @@
+.cu-p{
+	cursor: pointer;
+}
 .container_navbar {
 	position: fixed;
 	width: 275px;
@@ -11,13 +14,16 @@
 		color: #fff;
 		justify-content: center;
 		align-items: center;
-		padding: 15px 93px;
+		padding: 14px 82px;
 		gap: 10px;
 		width: 228px;
 		height: 49px;
 		background: #1da1f2;
 		border-radius: 9999px;
 		margin-left: 10px;
+		font-weight: 700;
+		font-size: 15px;
+		line-height: 19px;
 	}
 	& > .container_navbar__profile {
 		margin-top: 170px;
