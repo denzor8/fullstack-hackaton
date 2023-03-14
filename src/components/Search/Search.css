@@ -1,0 +1,58 @@
+.search {
+    padding-bottom: 7.5rem;
+    padding-left: 2rem;
+    position: fixed;
+    right: 20px;
+}
+.search-inp {
+    width: 348px;
+    height: 39px;
+    background: #283340;
+    border-radius: 99999px;
+    border: none;
+    font-size: 16px;
+    padding-left: 3rem;
+    background: #283340 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+}
+.search_hap {
+    width: 350px;
+    height: 500px;
+    background: #1C2733;
+    border-radius: 16px;
+}
+.search_title {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+}
+.search-follow {
+    width: 350px;
+    height: 224px;
+    background: #1C2733;
+    border-radius: 16px;
+    margin-top: 1rem;
+}
+.search_span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8899A6;
+    padding-left: 1rem;
+}
+.search_text {
+    width: 235px;
+    height: 70px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    padding-left: 1rem;
+}
+.search_link {
+    font-size: 15px;
+    line-height: 18px;
+    color: #1DA1F2;
+    padding-left: 1rem;
+}
