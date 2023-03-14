@@ -5,3 +5,6 @@ body {
 .aboutSideWrapper > ul > li {
 	list-style-type: none;
 }
+.loginSide {
+	background: white;
+}

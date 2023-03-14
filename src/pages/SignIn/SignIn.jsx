@@ -24,10 +24,11 @@ function SignIn() {
   };
 
   const { handleRegister, setError } = useContext(authContext);
-  const [name, setName] = useState('')
+  const [username, setName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [password2, setPasswordConfirm] = useState('');
+  const [date_of_birth, setData] = useState('');
 
 
   useEffect(() => {
@@ -35,16 +36,18 @@ function SignIn() {
   }, []);
 
   function handleSave() {
-    if(!email.trim() || !password.trim() || !passwordConfirm.trim() || !email.trim()) {
+    if(!email.trim() || !password.trim() || !password2.trim() || !email.trim()) {
       alert('Some inputs are empty!');
       return;
     };
-    let formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('password_confirm', passwordConfirm);
-    handleRegister(formData);
+    let obj = {
+      'email': email,
+      'username': username,
+      'password': password,
+      'password2': password2,
+      'date_of_birth': date_of_birth
+    }
+    handleRegister(obj);
     handleCloseModal()
   };
 
@@ -224,12 +227,27 @@ function SignIn() {
                   fullWidth
                   onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
+                <TextField
+                  sx={{marginBottom: '5px'}}
+                  autoFocus
+                  label="Data"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="date"
+                   id="start"
+                  name="trip-start"
+                  // value="2018-07-22"
+                  min="2000-01-01" 
+                  max="2023-01-31"
+                  fullWidth
+                  onChange={(e) => setData(e.target.value)}
+                />
                 <Button onClick={handleSave} variant="contained" color="primary" fullWidth >Далее</Button>
               </FormGroup>
             </FormControl>
           </ModalBlock>
-
-
         </div>
       </section>
     </div>

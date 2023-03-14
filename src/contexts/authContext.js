@@ -10,10 +10,10 @@ const AuthContextProvider = ({ children }) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    async function handleRegister(formData) {
+    async function handleRegister(obj) {
         setLoading(true);
         try {
-            const res = await axios.post(`${API}/api/account/register/`, formData);
+            const res = await axios.post(`${API}/api/account/register/`, obj);
             console.log(res);
         } catch(err) {
             console.log(err);

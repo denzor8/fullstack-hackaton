@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import SignIn from './pages/SignIn/SignIn';
 import ProductsListPage from './pages/ProductListPage/ProductsListPage';
 import AuthContextProvider from './contexts/authContext';
+import Search from './components/Search/Search';
 
 const MainRoutes = () => {
 	return (
@@ -16,6 +17,7 @@ const MainRoutes = () => {
 				<div style={{display: 'flex', alignItems: 'center'}} >
 					<Navbar/>
 					<ProductsListPage/>
+					<Search/>
 				</div> }  />
 				<Route path='/signIn' element={ <SignIn/> } />
 			</Routes>
