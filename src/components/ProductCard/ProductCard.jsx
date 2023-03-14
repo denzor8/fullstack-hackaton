@@ -23,7 +23,6 @@ const ProductCard = () => {
             placeholder='What’s happening?'
             type="text"
             maxLength={280}
-            maxRows={4}
             label="Multiline"
           />
         </div>

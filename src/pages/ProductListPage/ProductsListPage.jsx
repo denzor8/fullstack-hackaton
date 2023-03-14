@@ -4,11 +4,13 @@ import Navbar from '../../components/Navbar/Navbar'
 import Search from '../../components/Search/Search'
 const ProductsListPage = () => {
   return (
-    <div style={{display: 'flex', alignItems: 'center'}} >
+    <>
       <Navbar />
-      <ProductList />
-      <Search/>
-    </div>
+      <div style={{display:'flex'}}>
+        <ProductList />
+        <Search />
+      </div>
+    </>
   )
 }
 

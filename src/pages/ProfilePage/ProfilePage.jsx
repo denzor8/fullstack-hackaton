@@ -5,9 +5,11 @@ import Search from '../../components/Search/Search'
 const ProfilePage = () => {
 	return (
 		<>
-			<Navbar/>
-			<Profile />
-			<Search/>
+			<Navbar />
+			<div style={{ display: 'flex' }}>
+				<Profile />
+				<Search />
+			</div>
 		</>
 	)
 }

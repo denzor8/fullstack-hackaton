@@ -18,7 +18,7 @@ import icon4 from './img/prof.png'
 import icon5 from './img/more.png'
 import icon6 from './img/profile.png'
 //
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 import './Navbar.scss'
@@ -130,21 +130,26 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <Button variant="outlined" color="primary" >Tweet</Button>
-        <div className='container_navbar__profile' style={{ display: 'flex', alignItems: 'center' }} >
+        <Button style={{
+          // textTransform: 'none'
+        }}
+          variant="outlined"
+          color="primary" >
+        Tweet</Button>
+      <div className='container_navbar__profile' style={{ display: 'flex', alignItems: 'center' }} >
+        <div>
+          <img src={icon6} alt="" className="card_user_icon" />
+        </div>
+
+        <div style={{ paddingLeft: '10px' }} >
           <div>
-            <img src={icon6} alt="" className="card_user_icon" />
+            <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
+            <h4 style={{ margin: 1, color: '#8899A6' }} >@johndue 23</h4>
           </div>
 
-          <div style={{ paddingLeft: '10px' }} >
-            <div>
-              <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
-              <h4 style={{ margin:1 ,color: '#8899A6' }} >@johndue 23</h4>
-            </div>
-
-          </div>
         </div>
       </div>
+    </div>
     </>
   )
 }
