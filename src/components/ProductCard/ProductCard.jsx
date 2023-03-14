@@ -1,18 +1,53 @@
+import React, { useState, useEffect } from 'react';
 import { display } from '@mui/system';
 import TextField from '@mui/material/TextField';
-import React from 'react';
 import './ProductCard.scss'
 import {
   Button,
 } from "@mui/material";
 const ProductCard = () => {
+  const [isVisible, setIsVisible] = useState(true);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  const handleScroll = () => {
+    setIsVisible(true);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <div className='card' >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+
+
+      {/* <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
         <h3 className='card_title p16'>Home</h3>
         <img src="../../../image/Group.png" alt="" className="card_icon p16" />
+      </div> */}
+
+      <div className='profile__container'>
+        {isVisible && (
+          <div onClick={scrollToTop}
+            className='profile__fixed'>
+              <div className='profile__name'>
+                <div className='profile__name-name'>Home</div>
+              </div>
+              <div className="profile_icon">
+                <img src="../../../image/Group.png" alt="" className="card_icon p16" />
+              </div>
+          </div>
+        )}
       </div>
+
+
       {/* tweet */}
       <div className='small-scretch' />
       <div className="card_user p16">
