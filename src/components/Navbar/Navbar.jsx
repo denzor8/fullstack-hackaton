@@ -130,7 +130,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <button>Tweet</button>
+        <Button variant="outlined" color="primary" >Tweet</Button>
         <div className='container_navbar__profile' style={{ display: 'flex', alignItems: 'center' }} >
           <div>
             <img src={icon6} alt="" className="card_user_icon" />

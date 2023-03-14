@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { ModalBlock } from '../../components/ModalBlock';
 import PeopleIcon from '@mui/icons-material/People';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
-import './SignIn.css';
+import './SignIn.scss';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/authContext';
 
