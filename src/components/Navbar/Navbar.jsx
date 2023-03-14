@@ -3,10 +3,6 @@ import React from 'react'
 import {
   Typography,
   Button,
-  FormControl,
-  FormGroup,
-  TextField,
-  Theme,
 } from "@mui/material";
 // icons
 import Home from './img/home.png'

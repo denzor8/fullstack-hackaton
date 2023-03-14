@@ -2,9 +2,8 @@
 	margin: 0;
 	padding: 0;
 }
-a{
+a {
 	text-decoration: none;
-
 }
 .profile {
 	width: 600px;
@@ -29,10 +28,10 @@ a{
 	color: #8899a6;
 	line-height: 15px;
 }
-.profile__container{
+.profile__container {
 	width: 600px;
 	height: 53px;
-	background: #17202A;
+	background: #17202a;
 	padding-bottom: 10px;
 	display: flex;
 	align-items: center;
@@ -42,7 +41,7 @@ a{
 .profile__fixed {
 	width: 600px;
 	position: fixed;
-	background: #17202A;
+	background: #17202a;
 	z-index: 4;
 	opacity: 0.7;
 	padding-top: 10px;
@@ -51,7 +50,7 @@ a{
 	align-items: center;
 	cursor: pointer;
 }
-.profile__scroll{
+.profile__scroll {
 	display: flex;
 }
 .profile_icon {
@@ -106,6 +105,7 @@ a{
 }
 .profile__btn {
 	& > button {
+		text-transform: none;
 		margin-top: 10px;
 		background-color: inherit;
 		width: 112px;
@@ -116,7 +116,14 @@ a{
 		padding: 5px 7px;
 		border: 1px solid #1da1f2;
 		border-radius: 9999px;
-		color: #1da1f2;
+		color: #fff;
+		background-color: #1da1f2;
+		// transition: all 0.9 ease;
+		transition-duration: 0.9;
+
+		&:hover {
+			// background-color: #1da1f2;
+		}
 	}
 }
 .profile__info-data {
@@ -156,6 +163,41 @@ a{
 		margin-right: 4px;
 	}
 }
-.profile__id{
+.profile__id {
 	width: 600px;
+}
+.profile__category {
+	margin-top: 20px;
+	margin-left: 20px;
+	display: flex;
+	// border-bottom: 1px solid #3a444c;
+	// justify-content: space-between;
+
+	& > div {
+		// width: 400px;
+		font-size: 16px;
+		color: #8899a6;
+		// padding-right: 50px;
+		padding: 20px;
+		margin-right: 20px;
+		align-items: center;
+		text-align: center;
+		transition-duration: 0.2s;
+		border-bottom: none;
+		& > div {
+			& > button {
+				margin-right: 20px;
+			}
+		}
+	}
+}
+.css-3rulgx-MuiButtonBase-root-MuiTab-root {
+	transition-duration: 0.2s;
+	&:hover{
+		border-radius: 7px;
+		background-color: #6b6e70;
+	}
+	&:not(:last-child) {
+		margin-right: 90px !important;
+	}
 }
