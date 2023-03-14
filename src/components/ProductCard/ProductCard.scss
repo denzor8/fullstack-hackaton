@@ -6,9 +6,51 @@
 	width: 600px;
 	margin: 0 auto;
 	padding: 0 16px;
+	height: 1000vh;
 	border-left: solid 1px #3a444c;
 	border-right: solid 1px #3a444c;
 }
+
+
+
+.profile__container{
+	width: 600px;
+	height: 53px;
+	background: #17202A;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.profile__fixed {
+	width: 600px;
+	position: fixed;
+	background: #17202A;
+	z-index: 4;
+	opacity: 0.7;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: space-between;
+}
+.card__scroll{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.profile__name {
+	margin-top: 5px;
+}
+
+
+
+
 .card_title {
 	font-size: 19px;
 	color: white;

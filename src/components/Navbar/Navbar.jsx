@@ -140,7 +140,8 @@ const Navbar = () => {
           <div style={{ paddingLeft: '10px' }} >
             <div>
               <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
-              <h4 style={{ margin:1 ,color: '#8899A6' }} >@johndue 23</h4>
+              <h4 style={{ margin: 1, color: '#8899A6' }} >@johndue 23</h4>
+              
             </div>
 
           </div>
