@@ -10,10 +10,10 @@ const AuthContextProvider = ({ children }) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    async function handleRegister(formData) {
+    async function handleRegister(obj) {
         setLoading(true);
         try {
-            const res = await axios.post(`${API}/account/register/`, formData);
+            const res = await axios.post(`${API}/account/register/`, obj);
             console.log(res);
         } catch(err) {
             console.log(err);
@@ -23,9 +23,9 @@ const AuthContextProvider = ({ children }) => {
         };
     };
 
-    async function handleLogin(formData, email, navigate) {
+    async function handleLogin(obj, email, navigate) {
         try {
-            const res = await axios.post(`${API}/api/account/login/`, formData);
+            const res = await axios.post(`${API}/account/login/`, obj);
             localStorage.setItem("tokens", JSON.stringify(res.data));
             localStorage.setItem("email", email);
             setCurrentUser(email);
