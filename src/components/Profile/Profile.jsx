@@ -17,10 +17,12 @@ import prev from './img/prev.png'
 import profile1 from './img/profile.png'
 import bgc from './img/Placeholder.png'
 import '../../styles/index.scss'
+import EditProfile from "./EditProfile/EditProfile";
+import ModalBlock from '../ModalBlock/ModalBlock'
+import { useProfile } from "../../contexts/profileContext";
+import icon6 from './img/profile.png'
 
-
-
-
+// scroll to top
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
 
@@ -53,11 +55,23 @@ function a11yProps(index) {
 		'aria-controls': `simple-tabpanel-${index}`,
 	};
 }
+// scroll to top end
 
 const Profile = () => {
 	const [isVisible, setIsVisible] = useState(true);
 	const [value, setValue] = React.useState(0);
-
+	// profile
+	const {
+		avatar,
+		visibleEditProfile,
+		getCurrentUser,
+		getProductDetails,
+		saveEditedProfile,
+		handleClickOpenEditProfile,
+		onCloseEditProfile,
+		setAvatar,
+	} = useProfile();
+	// scroll to top 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
@@ -78,7 +92,7 @@ const Profile = () => {
 			behavior: 'smooth',
 		});
 	};
-
+	// scroll to top  end
 	return (
 		<>
 			<div className='profile'>
@@ -108,7 +122,7 @@ const Profile = () => {
 						<img src={bgc} alt="" />
 					</div>
 					<div className='profile__child'>
-						<img src={profile1} alt="" />
+						<img src={avatar? avatar : icon6}alt="Avatar" />
 					</div>
 					<div className='profile__block'>
 						<div className='profile__info'>
@@ -127,7 +141,7 @@ const Profile = () => {
 								{/* data */}
 								<div className='profile__location'>
 									<IconButton color="secondary" >
-										<CalendarMonthIcon/>
+										<CalendarMonthIcon />
 									</IconButton>
 									<span>Joined September 2011</span>
 									{/* data end*/}
@@ -151,20 +165,24 @@ const Profile = () => {
 						</div>
 						{/* button */}
 						<div className='profile__btn'>
-							{/* <button >Edit profile</button> */}
-							<Button variant="outlined" color="primary" >Tweet</Button>
+							<>
+								<Button
+									onClick={handleClickOpenEditProfile}
+									variant="outlined"
+									color="primary">Edit profile</Button>
+								<ModalBlock
+									title='Edit profile'
+									onClose={onCloseEditProfile}
+									visible={visibleEditProfile}>
+									<div style={{ width: 550 }} >
+										<EditProfile maxRows={15} />
+									</div>
+								</ModalBlock>
+							</>
 						</div>
 						{/* button  end*/}
 					</div>
 				</div>
-				{/*  */}
-				{/* <div className='profile__category'>
-					<div>Tweets</div>
-					<div>Tweets & replies</div>
-					<div>Media</div>
-					<div>Likes</div>
-				</div> */}
-				{/*  */}
 				<div className='profile__category'>
 					<Box sx={{ width: '100%' }}>
 						<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

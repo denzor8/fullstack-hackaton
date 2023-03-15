@@ -5,6 +5,7 @@ import {
     DialogTitle,
     IconButton,
     DialogContent,
+    Button,
 } from "@mui/material";
 
 
@@ -30,10 +31,11 @@ const ModalBlock = ({
                 </IconButton>
                 {title}
             </DialogTitle>
+
             <DialogContent>
                 {children}
             </DialogContent>
-        </Dialog>
+        </Dialog >
     )
 }
 export default ModalBlock

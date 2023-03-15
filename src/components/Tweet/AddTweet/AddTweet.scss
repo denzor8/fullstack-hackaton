@@ -5,7 +5,7 @@
 .addFormBody {
 	display: flex;
 	width: 100%;
-	&>textarea {
+	& > textarea {
 		&:focus {
 			color: #fff;
 		}
@@ -44,7 +44,7 @@
 .addFormBottomRight {
 	display: flex;
 	align-items: center;
-	&>span{
+	& > span {
 		color: #fff;
 	}
 }
@@ -66,4 +66,17 @@
 }
 .css-ypiqx9-MuiDialogContent-root {
 	background-color: #17202a;
+}
+
+.css-z2ws33-MuiInputBase-root-MuiFilledInput-root {
+	background-color: #fff !important;
+}
+
+.file__input {
+	margin-top: 8px;
+	& > svg {
+		width: 26px;
+		height: 26px;
+		color: #3aa2f2;
+	}
 }

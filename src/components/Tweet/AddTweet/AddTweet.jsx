@@ -3,20 +3,9 @@ import React from 'react'
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import TextLimitProgress from '@mui/icons-material/TextSnippetOutlined';
-
+import { useProfile } from '../../../contexts/profileContext';
 import {
-	InputAdornment,
-	List,
-	ListItem,
-	Divider,
-	ListItemAvatar,
-
-	Typography,
-	TextField,
 	IconButton,
-	Container,
-	Theme,
-	createTheme,
 	Paper,
 	Avatar,
 	TextareaAutosize,
@@ -27,10 +16,17 @@ import {
 
 import './AddTweet.scss'
 const AddTweet = ({ maxRows }) => {
+	// const { avatar, handlePhotoChange } = useProfile();
 	const [text, setText] = React.useState('');
 	const textLimitPercent = Math.round((text.length / 280) * 100);
 	const maxLength = 281 - text.length;
-	const textCount = maxLength ;
+	const textCount = maxLength;
+	const [image, setImage] = React.useState(null);
+	const handleImageChange = (e) => {
+		setImage(e.target.files[0]);
+	};
+
+
 
 	const handleChangeTextArea = (e) => {
 		if (e.currentTarget && text.length <= 280) {
@@ -39,6 +35,7 @@ const AddTweet = ({ maxRows }) => {
 	}
 
 	const handleClickAddTweet = () => {
+
 		setText('');
 	};
 
@@ -62,7 +59,18 @@ const AddTweet = ({ maxRows }) => {
 			<div className="addFormBottom">
 				<div className="tweetFooter addFormBottomActions">
 					<IconButton color='primary' >
-						<ImageOutlinedIcon style={{ fontSize: 26 }} />
+						<label
+							className='file__input'
+							htmlFor="imageUpload"
+						>
+							<ImageOutlinedIcon />
+						</label>
+						<input
+							type="file"
+							id="imageUpload"
+							style={{ display: "none" }}
+							onChange={handleImageChange}
+						/>
 					</IconButton>
 					<IconButton color='primary' >
 						<EmojiIcon style={{ fontSize: 26 }} />
