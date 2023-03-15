@@ -1,0 +1,69 @@
+.addForm {
+	padding: 20px;
+	background-color: #17202a;
+}
+.addFormBody {
+	display: flex;
+	width: 100%;
+	&>textarea {
+		&:focus {
+			color: #fff;
+		}
+	}
+}
+.addFormBottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.addFormBottomActions {
+	padding-left: 70px;
+}
+.addFormTextarea {
+	width: 100%;
+	border: 0;
+	font-size: 20px;
+	outline: none;
+	background-color: #17202a !important;
+	font-family: inherit;
+	resize: none;
+}
+.addFormBottomLine {
+	height: 12px;
+	background-color: #e6ecf0 !important;
+}
+.addFormCircleProgress {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	margin: 0 10px;
+	& .MuiCircularProgress-root {
+		position: absolute !important;
+	}
+}
+.addFormBottomRight {
+	display: flex;
+	align-items: center;
+	&>span{
+		color: #fff;
+	}
+}
+.tweetAvatar {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+.tweetFooter {
+	position: relative;
+	left: -9;
+	display: flex !important;
+	justify-content: space-between;
+	width: 450px;
+}
+
+.css-ncz0sk-MuiTypography-root-MuiDialogTitle-root {
+	background-color: #17202a;
+}
+.css-ypiqx9-MuiDialogContent-root {
+	background-color: #17202a;
+}
