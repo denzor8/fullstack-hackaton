@@ -4,7 +4,9 @@ import TextField from '@mui/material/TextField';
 import './ProductCard.scss'
 import {
   Button,
+  IconButton,
 } from "@mui/material";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import AddTweet from '../../components/AddTweet/AddTweet'
 const ProductCard = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -38,12 +40,15 @@ const ProductCard = () => {
         {isVisible && (
           <div onClick={scrollToTop}
             className='profile__fixed'>
-              <div className='profile__name'>
-                <div className='profile__name-name'>Home</div>
-              </div>
-              <div className="profile_icon">
-                <img src="../../../image/Group.png" alt="" className="card_icon p16" />
-              </div>
+            <div className='profile__name'>
+              <div className='profile__name-name'>Home</div>
+            </div>
+            <div className="profile_icon">
+              {/* <img src="../../../image/Group.png" alt="" className="card_icon p16" /> */}
+              <IconButton color='primary' >
+                <AutoAwesomeIcon  style={{ fontSize: 26 }}/>
+              </IconButton>
+            </div>
           </div>
         )}
       </div>
@@ -52,7 +57,7 @@ const ProductCard = () => {
       {/* tweet */}
       <div className='small-scretch' />
       {/* components */}
-      <AddTweet/>
+      <AddTweet />
       {/* components */}
       {/* tweet  end*/}
 
