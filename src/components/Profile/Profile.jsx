@@ -20,7 +20,7 @@ import '../../styles/index.scss'
 import EditProfile from "./EditProfile/EditProfile";
 import ModalBlock from '../ModalBlock/ModalBlock'
 import { useProfile } from "../../contexts/profileContext";
-import icon6 from './img/profile.png'
+import icon6 from './img/chaika.jpeg'
 
 // scroll to top
 function TabPanel(props) {
@@ -174,7 +174,7 @@ const Profile = () => {
 									title='Edit profile'
 									onClose={onCloseEditProfile}
 									visible={visibleEditProfile}>
-									<div style={{ width: 550 }} >
+									<div style={{width: 580,}} >
 										<EditProfile maxRows={15} />
 									</div>
 								</ModalBlock>

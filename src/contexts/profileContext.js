@@ -36,7 +36,6 @@ const ProfileContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
 	const [visibleEditProfile, setVisibleEditProfile] = React.useState(false);
 	const [avatar, setAvatar] = useState(null)
-	// const [avatar, setAvatar] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU')
 	const handlePhotoChange = (e) => {
 		setAvatar(e.target.files[0]);
 	};
@@ -49,6 +48,11 @@ const ProfileContextProvider = ({ children }) => {
 	}
 	const onCloseEditProfile = () => {
 		setVisibleEditProfile(false);
+	}
+	const deletePhoto = () => {
+		if (avatar) {
+			avatar.remove();
+		}
 	}
 
 	const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -108,7 +112,8 @@ const ProfileContextProvider = ({ children }) => {
 		handleClickOpenEditProfile,
 		onCloseEditProfile,
 		setAvatar,
-		handlePhotoChange
+		handlePhotoChange,
+		deletePhoto
 	}
 	return (
 		<profileContext.Provider value={values}>{children}</profileContext.Provider>

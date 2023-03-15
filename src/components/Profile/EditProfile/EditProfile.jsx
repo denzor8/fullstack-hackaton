@@ -3,10 +3,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import TextLimitProgress from '@mui/icons-material/TextSnippetOutlined';
+import { height } from '@mui/system';
+import { IconButton,Typography, Button, FormControl, FormGroup, TextField, Theme, } from "@mui/material";
+//icons
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import ClearIcon from '@mui/icons-material/Clear';
+
+
 import ModalBlock from '../../ModalBlock/ModalBlock';
 import { useProfile } from '../../../contexts/profileContext';
-import { Typography, Button, FormControl, FormGroup, TextField, Theme, } from "@mui/material";
-import { height } from '@mui/system';
+import icon6 from '../img/chaika.jpeg'
+import './EditProfile.scss'
 
 const EditProfile = ({ maxRows }) => {
 	const [isVisible, setIsVisible] = useState(true);
@@ -19,7 +26,9 @@ const EditProfile = ({ maxRows }) => {
 		saveEditedProfile,
 		handleClickOpenEditProfile,
 		onCloseEditProfile,
-		setAvatar
+		setAvatar,
+		handlePhotoChange,
+		deletePhoto
 	} = useProfile();
 	// profile
 	// const [avatar, setAvatar] = useState(null)
@@ -39,69 +48,94 @@ const EditProfile = ({ maxRows }) => {
 		onCloseEditProfile()
 	};
 
-	const handlePhotoChange = (e) => {
-    setAvatar(e.target.files[0]);
-  };
-	return (
 
-		<FormControl
-			sx={{ marginBottom: '2px' }}
-			component="fieldset"
-			fullWidth >
-			<FormGroup aria-label="position" >
-				<div style={{
-					display: 'flex',
-					flexDirection: 'column',
-				}}>
-					<div>
-						<TextField
-							sx={{ marginBottom: '5px', }}
-							autoFocus
-							id="name"
-							label="Name"
-							InputLabelProps={{
-								shrink: true,
-							}}
-							variant="filled"
-							type="name"
-							fullWidth
-							onChange={(e) => setName(e.target.value)}
-						/>
-					</div>
-					{/* about me */}
-					<div>
-						<TextField
-							sx={{ marginBottom: '5px', }}
-							autoFocus
-							id="aboutMe"
-							label="About me"
-							InputLabelProps={{
-								shrink: true,
-							}}
-							variant="filled"
-							type="name"
-							fullWidth
-							onChange={(e) => setAboutMe(e.target.value)}
-						/>
-					</div>
-					<div>
-						<TextField
-							sx={{ marginBottom: '5px', }}
-							autoFocus
-							InputLabelProps={{
-								shrink: true,
-							}}
-							variant="filled"
+	return (
+		<>
+			<div className='edit__profile-photo'>
+				<div>
+				<IconButton color='primary' >
+						<label
+							className='file__input'
+							htmlFor="imageUpload"
+						>
+							<AddAPhotoIcon />
+						</label>
+						<input
 							type="file"
-							fullWidth
+							id="imageUpload"
+							style={{ display: "none" }}
 							onChange={handlePhotoChange}
 						/>
-					</div>
-					{/* about me */}
-					<Button onClick={handleSave} variant="contained" color="primary" fullWidth >Save Changes</Button>
+					</IconButton>
+					
+					<IconButton color='primary' >
+						<label
+							className='file__input'
+							htmlFor="imageUpload"
+						>
+							<ClearIcon />
+						</label>
+						<input
+							type="reset"
+							id="imageUpload"
+							style={{ display: "none" }}
+							onChange={deletePhoto}
+						/>
+					</IconButton>
+
 				</div>
-			</FormGroup>
-		</FormControl>
+			</div>
+			<div className='edit__profile'>
+				<img src={avatar ? avatar : icon6} alt="Avatar" />
+			</div>
+			<FormControl
+				sx={{ marginBottom: '2px' }}
+				component="fieldset"
+				fullWidth >
+				<FormGroup aria-label="position" >
+					<div style={{
+						display: 'flex',
+						flexDirection: 'column',
+					}}>
+						<div>
+							<TextField
+								sx={{ marginBottom: '15px', width: '80%' }}
+								autoFocus
+								id="name"
+								label="Name"
+								InputLabelProps={{
+									shrink: true,
+								}}
+								variant="filled"
+								type="name"
+								fullWidth
+								onChange={(e) => setName(e.target.value)}
+							/>
+						</div>
+						{/* about me */}
+						<div>
+							<TextField
+								sx={{ marginBottom: '15px', width: '80%' }}
+								autoFocus
+								id="aboutMe"
+								label="About me"
+								InputLabelProps={{
+									shrink: true,
+								}}
+								variant="filled"
+								type="name"
+								fullWidth
+								onChange={(e) => setAboutMe(e.target.value)}
+							/>
+						</div>
+						{/* about me */}
+						<Button
+							sx={{ marginBottom: '5px', width: '80%' }}
+							onClick={handleSave} variant="contained" color="primary" fullWidth >Save Changes</Button>
+					</div>
+				</FormGroup>
+			</FormControl>
+		</>
 	)
 }
 
