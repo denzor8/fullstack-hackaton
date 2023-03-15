@@ -53,7 +53,9 @@ const EditProfile = ({ maxRows }) => {
 		<>
 			<div className='edit__profile-photo'>
 				<div>
-				<IconButton color='primary' >
+					<IconButton
+						sx={{marginRight: 10}}
+						color='primary' >
 						<label
 							className='file__input'
 							htmlFor="imageUpload"
@@ -67,17 +69,15 @@ const EditProfile = ({ maxRows }) => {
 							onChange={handlePhotoChange}
 						/>
 					</IconButton>
-					
+
 					<IconButton color='primary' >
 						<label
 							className='file__input'
-							htmlFor="imageUpload"
 						>
 							<ClearIcon />
 						</label>
 						<input
 							type="reset"
-							id="imageUpload"
 							style={{ display: "none" }}
 							onChange={deletePhoto}
 						/>
