@@ -7,7 +7,7 @@ import {
   IconButton,
 } from "@mui/material";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import AddTweet from '../../components/AddTweet/AddTweet'
+import AddTweet from '../Tweet/AddTweet/AddTweet'
 const ProductCard = () => {
   const [isVisible, setIsVisible] = useState(true);
 

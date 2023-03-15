@@ -7,11 +7,12 @@ import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import './SignIn.scss';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/authContext';
-import ModalBlock from '../../components/ModalBlock';
+import ModalBlock from '../../components/ModalBlock/ModalBlock';
 
 
 function SignIn() {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
   const [visibleModal, setVisibleModal] = useState('');
   const handleClickOpenSignIn = () => {
     setVisibleModal('signIn');

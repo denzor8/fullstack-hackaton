@@ -6,20 +6,23 @@ import ProductsListPage from './pages/ProductListPage/ProductsListPage';
 import AuthContextProvider from './contexts/authContext';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import MessagesPage from './pages/MessagesPage/MessagesPage';
+import ProfileContextProvider from './contexts/profileContext';
 
 const MainRoutes = () => {
 	// const token = localStorage.getItem('token');
-	const token = true
+	const token = true;
 	return (
 		<>
-			<AuthContextProvider>
-				<Routes>
-					<Route path='/' element={token ? <ProductsListPage /> : <SignIn />} />
-					<Route path='/signIn' element={<SignIn />} />
-					<Route path='/profile' element={<ProfilePage />} />
-					<Route path='/message' element={<MessagesPage/>} />
-				</Routes>
-			</AuthContextProvider>
+			<ProfileContextProvider>
+				<AuthContextProvider>
+					<Routes>
+						<Route path='/' element={token ? <ProductsListPage /> : <SignIn />} />
+						<Route path='/signIn' element={<SignIn />} />
+						<Route path='/profile' element={token ? <ProfilePage /> : <SignIn />} />
+						<Route path='/message' element={token ? <MessagesPage /> : <SignIn />} />
+					</Routes>
+				</AuthContextProvider>
+			</ProfileContextProvider>
 		</>
 	);
 }
