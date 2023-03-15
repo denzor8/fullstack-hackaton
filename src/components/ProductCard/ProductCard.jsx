@@ -4,7 +4,10 @@ import TextField from '@mui/material/TextField';
 import './ProductCard.scss'
 import {
   Button,
+  IconButton,
 } from "@mui/material";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import AddTweet from '../../components/AddTweet/AddTweet'
 const ProductCard = () => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -37,12 +40,15 @@ const ProductCard = () => {
         {isVisible && (
           <div onClick={scrollToTop}
             className='profile__fixed'>
-              <div className='profile__name'>
-                <div className='profile__name-name'>Home</div>
-              </div>
-              <div className="profile_icon">
-                <img src="../../../image/Group.png" alt="" className="card_icon p16" />
-              </div>
+            <div className='profile__name'>
+              <div className='profile__name-name'>Home</div>
+            </div>
+            <div className="profile_icon">
+              {/* <img src="../../../image/Group.png" alt="" className="card_icon p16" /> */}
+              <IconButton color='primary' >
+                <AutoAwesomeIcon  style={{ fontSize: 26 }}/>
+              </IconButton>
+            </div>
           </div>
         )}
       </div>
@@ -50,31 +56,9 @@ const ProductCard = () => {
 
       {/* tweet */}
       <div className='small-scretch' />
-      <div className="card_user p16">
-        <div style={{ display: 'flex', alignItems: 'center' }} >
-          <img src="../../../image/user_icon.png" alt="" className="card_user_icon" />
-          <input
-            className='card_user_inp'
-            placeholder='What’s happening?'
-            type="text"
-            maxLength={280}
-            label="Multiline"
-          />
-        </div>
-
-        <div style={{ paddingLeft: '3rem', paddingTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-          <div>
-            <img className='card-sholder' src="../../../image/part-1.png" alt="" />
-            <img className='card-sholder' src="../../../image/part-2.png" alt="" />
-            <img className='card-sholder' src="../../../image/part-3.png" alt="" />
-            <img className='card-sholder' src="../../../image/part-4.png" alt="" />
-            <img className='card-sholder' src="../../../image/part-5.png" alt="" />
-          </div>
-
-          <button className='card_user_btn'>Tweet</button>
-
-        </div>
-      </div>
+      {/* components */}
+      <AddTweet />
+      {/* components */}
       {/* tweet  end*/}
 
       <div className='small-scretch'></div>

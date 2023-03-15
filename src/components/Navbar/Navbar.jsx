@@ -1,4 +1,4 @@
-import React from 'react' 
+import React from 'react'
 import {
   Typography,
   Button,
@@ -14,13 +14,22 @@ import icon4 from './img/prof.png'
 import icon5 from './img/more.png'
 import icon6 from './img/profile.png'
 //
-import {useNavigate} from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
+import ModalBlock from '../../components/ModalBlock'
+import AddTweet from '../../components/AddTweet/AddTweet'
 
 import './Navbar.scss'
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [visibleAddTweet, setVisibleAddTweet] = React.useState(false);
+
+  const handleClickOpenAddTweet = () => {
+    setVisibleAddTweet(true);
+  }
+  const onCloseAddTweet = () => {
+    setVisibleAddTweet(false);
+  }
   return (
     <>
       <div className='container_navbar'>
@@ -126,7 +135,18 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <Button variant="outlined" color="primary" >Tweet</Button>
+        <>
+          <Button
+            onClick={handleClickOpenAddTweet}
+            variant="outlined"
+            color="primary">Tweet</Button>
+          <ModalBlock onClose={onCloseAddTweet} visible={visibleAddTweet}>
+            <div style={{ width: 550 }} >
+              <AddTweet maxRows={15} />
+            </div>
+          </ModalBlock>
+        </>
+
         <div className='container_navbar__profile' style={{ display: 'flex', alignItems: 'center' }} >
           <div>
             <img src={icon6} alt="" className="card_user_icon" />
@@ -136,7 +156,7 @@ const Navbar = () => {
             <div>
               <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
               <h4 style={{ margin: 1, color: '#8899A6' }} >@johndue 23</h4>
-              
+
             </div>
 
           </div>

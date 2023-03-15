@@ -57,8 +57,16 @@
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.2s;
 	border-radius: 30px;
-	
-	&:hover{
+
+	& > button {
+		outline: none;
+		border: none;
+		text-transform: none;
+		width: 100%;
+
+	}
+
+	&:hover {
 		background: #888888;
 	}
 }
@@ -69,6 +77,6 @@
 	top: 10px;
 	border-radius: 99999px;
 }
-.css-1oq25t-MuiButtonBase-root-MuiButton-root{
+.css-1oq25t-MuiButtonBase-root-MuiButton-root {
 	text-transform: none;
 }

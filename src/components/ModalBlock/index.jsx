@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 
-export const ModalBlock = ({
+const ModalBlock = ({
     title,
     onClose,
     visible = false,
@@ -36,3 +36,4 @@ export const ModalBlock = ({
         </Dialog>
     )
 }
+export default ModalBlock
