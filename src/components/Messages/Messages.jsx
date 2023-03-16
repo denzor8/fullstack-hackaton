@@ -40,8 +40,6 @@ const Messages = () => {
   };
 
   const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
-const Messages = () => {
-  const [message, setMessage] = useState()
 
   return (
     <div className="message">
@@ -107,63 +105,66 @@ const Messages = () => {
                     <h5 className='go_link' >Delete</h5>
                   </div>
                 </div>
+              </div>
+
+              <div className='mess_content'>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <IconButton color='primary' >
+                    <label
+                      className='file__input'
+                      htmlFor="imageUpload"
+                    >
+                      <ImageOutlinedIcon />
+                    </label>
+                    <input
+                      type="file"
+                      id="imageUpload"
+                      style={{ display: "none" }}
+                    // onChange={handleImageChange}
+                    />
+                  </IconButton>
+                  <div className={styles.input}>
+                    <input
+                      type="text"
+                      name="message"
+                      placeholder="What do you want to say?"
+                      value={message}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      required
+                    />
+                  </div>
+                  <div className={styles.emoji}>
+                    <IconButton
+                      onClick={() => setOpen(!isOpen)}
+                      sx={{ marginLeft: 5 }} color='primary' >
+                      <EmojiIcon
+
+                        style={{ fontSize: 26, }} />
+                    </IconButton>
+                    {isOpen && (
+                      <div className={styles.emojies}>
+                        <EmojiPicker onEmojiClick={onEmojiClick} />
+                      </div>
+                    )}
+                  </div>
+                  <IconButton
+                    onSubmit={handleSubmit}
+                    sx={{ marginLeft: 5 }}
+                    color='primary'
+                    value='Send message'
+                  >
+                    <SendIcon />
+                  </IconButton>
+                  <div className={styles.button}>
+                  </div>
+                </form>
+              </div>
             </div>
 
-            <div className='mess_content'>
-              <form className={styles.form} onSubmit={handleSubmit}>
-                <IconButton color='primary' >
-                  <label
-                    className='file__input'
-                    htmlFor="imageUpload"
-                  >
-                    <ImageOutlinedIcon />
-                  </label>
-                  <input
-                    type="file"
-                    id="imageUpload"
-                    style={{ display: "none" }}
-                  // onChange={handleImageChange}
-                  />
-                </IconButton>
-                <div className={styles.input}>
-                  <input
-                    type="text"
-                    name="message"
-                    placeholder="What do you want to say?"
-                    value={message}
-                    onChange={handleChange}
-                    autoComplete="off"
-                    required
-                  />
-                </div>
-                <div className={styles.emoji}>
-                  <IconButton sx={{ marginLeft: 5 }} color='primary' >
-                    <EmojiIcon
-                      onClick={() => setOpen(!isOpen)}
-                      style={{ fontSize: 26, }} />
-                  </IconButton>
-                  {isOpen && (
-                    <div className={styles.emojies}>
-                      <EmojiPicker onEmojiClick={onEmojiClick} />
-                    </div>
-                  )}
-                </div>
-                <IconButton
-                  onSubmit={handleSubmit}
-                  sx={{ marginLeft: 5 }}
-                  color='primary'
-                  value='Send message'
-                >
-                  <SendIcon />
-                </IconButton>
-                <div className={styles.button}>
-                </div>
-              </form>
-            </div>
           </div>
 
         </div>
-
       </div>
     </div>
 
