@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Messages.css'
 
 const Messages = () => {
+  const [message, setMessage] = useState()
   return (
     <div className="message">
       <div className='message_user'>
@@ -52,7 +53,7 @@ const Messages = () => {
               <div style={{display: 'flex', justifyContent: 'flex-end', paddingTop: '5rem'}} >
                 <div className='mess-go' >
                   <div>
-                      <h1 className='go_title' >Hello</h1>
+                      <h1 className='go_title' >{message}</h1>
                        <h5 className='go_link' >Delete</h5>
                   </div>
                 </div>
@@ -60,7 +61,7 @@ const Messages = () => {
 
               <div className='mess_content'>
                    <div style={{marginTop: '3rem'}} className='small-scretch-bottom'></div>
-                   <input type="search"  className='mess_cont_search' placeholder='Start a new message' />
+                   <input type="search" onChange={(e) => setMessage(...message, e.target.value)}  className='mess_cont_search' placeholder='Start a new message' />
               </div>
 
             </div>

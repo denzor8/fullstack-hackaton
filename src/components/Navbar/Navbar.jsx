@@ -74,7 +74,7 @@ const Navbar = () => {
                 alt=""
                 width={25}
                 height={25} />
-              <Typography variant="h6" >
+              <Typography onClick={() => navigate('/notifications')} variant="h6" >
                 Notifications
               </Typography>
             </div>
@@ -100,7 +100,7 @@ const Navbar = () => {
                 alt=""
                 width={25}
                 height={22} />
-              <Typography variant="h6" >
+              <Typography variant="h6" onClick={() => navigate('/favorites')} >
                 Bookmarks
               </Typography>
             </div>
