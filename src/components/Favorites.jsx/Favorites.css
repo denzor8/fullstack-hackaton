@@ -1,0 +1,21 @@
+.favorites {
+    width: 600px;
+    margin: 0 auto;
+    border-left: 1px solid #3a444c;
+    border-right: 1px solid #3a444c;
+    padding: 20px;
+}
+.fav_title {
+    color: white;
+    font-size: 20px;
+}
+.fav_span {
+    color: rgb(136, 153, 166);
+    font-size: 13px;
+}
+.fav_static_image {
+    width: 340px;
+    height: 180px;
+    padding-left: 8rem;
+    padding-top: 3rem;
+}

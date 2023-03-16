@@ -40,6 +40,9 @@ const Messages = () => {
   };
 
   const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
+const Messages = () => {
+  const [message, setMessage] = useState()
+
   return (
     <div className="message">
       <div className='message_user'>
@@ -91,6 +94,7 @@ const Messages = () => {
               <div className='message__send-sms' >
                 <div className='mess-go' >
                   <div>
+
                     <h1 className='go_title' >Hello</h1>
                     <h5 className='go_link' >Delete</h5>
                   </div>
@@ -103,7 +107,6 @@ const Messages = () => {
                     <h5 className='go_link' >Delete</h5>
                   </div>
                 </div>
-              </div>
             </div>
 
             <div className='mess_content'>
