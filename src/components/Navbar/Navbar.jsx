@@ -12,7 +12,7 @@ import icon2 from './img/book.png'
 import icon3 from './img/lists.png'
 import icon4 from './img/prof.png'
 import icon5 from './img/more.png'
-import icon6 from './img/profile.png'
+import icon6 from '.././Profile/img/chaika.jpeg'
 //
 import { useNavigate } from 'react-router-dom'
 import ModalBlock from '../ModalBlock/ModalBlock'

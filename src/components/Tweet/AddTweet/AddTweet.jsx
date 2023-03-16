@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import TextLimitProgress from '@mui/icons-material/TextSnippetOutlined';
 import { useProfile } from '../../../contexts/profileContext';
+
 import {
 	IconButton,
 	Paper,
@@ -22,9 +23,12 @@ const AddTweet = ({ maxRows }) => {
 	const maxLength = 281 - text.length;
 	const textCount = maxLength;
 	const [image, setImage] = React.useState(null);
+	const [emoji, setEmoji] = useState(null);
+
 	const handleImageChange = (e) => {
 		setImage(e.target.files[0]);
 	};
+
 
 
 
@@ -72,8 +76,8 @@ const AddTweet = ({ maxRows }) => {
 							onChange={handleImageChange}
 						/>
 					</IconButton>
-					<IconButton color='primary' >
-						<EmojiIcon style={{ fontSize: 26 }} />
+					<IconButton sx={{marginLeft:5}} color='primary' >
+						<EmojiIcon style={{ fontSize: 26,  }} />
 					</IconButton>
 				</div>
 				<div className="addFormBottomRight">
