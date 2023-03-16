@@ -1,6 +1,7 @@
 .message {
     width: 600px;
     margin: 0 auto;
+    display: flex;
 }
 .message_user {
     width: 345px;
@@ -17,6 +18,9 @@
 .mes_user_title {
     color: white;
     font-size: 20px;
+}
+.mess_chat {
+    border-right: 1px solid #3a444c;
 }
 .mes_search {
     width: 348px;
@@ -40,4 +44,45 @@
 }
 .mes_acc:hover {
     background: #888888;
+}
+.mess-go {
+    width: 47px;
+    height: 47px;
+    background-color: rgb(219, 23, 125);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 22px;
+    border-bottom-right-radius: 1px;
+}
+.go_title {
+    color: white;
+    font-size: 13px;
+    padding-top: 2.4rem;
+}
+.go_link {
+    font-size: 12px;
+    margin-top: 1.5rem;
+    color: rgb(219, 23, 125);
+}
+.mess_content {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    align-items: flex-end;
+}
+.mess_cont_search {
+    width: 535px;
+    height: 42px;
+    background: #283340;
+    border-radius: 99999px;
+    border: none;
+    font-size: 16px;
+    padding-left: 3rem;
+    padding-right: 10px;
+    margin-top: 20px;
+    color: white;
+    background: #283340;
+    /* background: #283340 url('../../../Image/happy.png') no-repeat 13px center; */
 }
