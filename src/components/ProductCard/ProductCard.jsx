@@ -8,8 +8,17 @@ import {
 } from "@mui/material";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import AddTweet from '../Tweet/AddTweet/AddTweet'
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+
 const ProductCard = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -21,6 +30,14 @@ const ProductCard = () => {
     setIsVisible(true);
   };
 
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -29,13 +46,6 @@ const ProductCard = () => {
   };
   return (
     <div className='card' >
-
-
-      {/* <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-        <h3 className='card_title p16'>Home</h3>
-        <img src="../../../image/Group.png" alt="" className="card_icon p16" />
-      </div> */}
-
       <div className='profile__container'>
         {isVisible && (
           <div onClick={scrollToTop}
@@ -52,8 +62,6 @@ const ProductCard = () => {
           </div>
         )}
       </div>
-
-
       {/* tweet */}
       <div className='small-scretch' />
       {/* components */}
@@ -65,7 +73,6 @@ const ProductCard = () => {
       <div className='strech' ></div>
       <div className='small-scretch-bottom'></div>
 
-
       <div className="card_post p16">
         <div style={{ display: 'flex', alignItems: 'center' }} >
           <div>
@@ -76,6 +83,41 @@ const ProductCard = () => {
             <div style={{ display: 'flex', alignItems: 'center' }} >
               <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
               <span style={{ paddingLeft: '5px', color: '#8899A6' }} >@johndue 23</span>
+              <div style={{ paddingLeft: '18.5rem', color: '#8899A6', fontSize: '13px'}} >
+                            <IconButton
+                              size="large"
+                              aria-label="account of current user"
+                              aria-controls="menu-appbar"
+                              aria-haspopup="true"
+                              onClick={handleMenu}
+                              color="inherit"
+                              sx={{padding: '0'}}
+                            >
+                            <MoreVertIcon />
+                            </IconButton>
+                            <Menu
+                              id="menu-appbar"
+                              anchorEl={anchorEl}
+                              anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                              keepMounted
+                              transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                              open={Boolean(anchorEl)}
+                              onClose={handleClose}
+                            >
+                              <MenuItem>
+                                Edit
+                              </MenuItem>
+                              <MenuItem >
+                                Delete
+                              </MenuItem>
+                            </Menu>
+                </div>
             </div>
 
             <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '500px' }} >Tom is in a big hurry.</h4>
@@ -113,12 +155,47 @@ const ProductCard = () => {
           </div>
 
           <div style={{ paddingLeft: '10px' }} >
-            <div style={{ display: 'flex', alignItems: 'center' }} >
-              <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
-              <span style={{ paddingLeft: '5px', color: '#8899A6' }} >@johndue 23</span>
+            <div style={{ display: 'flex', alignItems:'center'}} >
+                <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
+                <span style={{ paddingLeft: '5px', color: '#8899A6' }} >@johndue 23</span>
+                <div style={{ paddingLeft: '18.5rem', color: '#8899A6', fontSize: '13px'}} >
+                            <IconButton
+                              size="large"
+                              aria-label="account of current user"
+                              aria-controls="menu-appbar"
+                              aria-haspopup="true"
+                              onClick={handleMenu}
+                              color="inherit"
+                              sx={{padding: '0'}}
+                            >
+                            <MoreVertIcon />
+                            </IconButton>
+                            <Menu
+                              id="menu-appbar"
+                              anchorEl={anchorEl}
+                              anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                              keepMounted
+                              transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                              }}
+                              open={Boolean(anchorEl)}
+                              onClose={handleClose}
+                            >
+                              <MenuItem>
+                                Edit
+                              </MenuItem>
+                              <MenuItem >
+                                Delete
+                              </MenuItem>
+                            </Menu>
+                </div>
             </div>
 
-            <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '500px' }} >Tom is in a big hurry.</h4>
+            <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '500px', color: 'white'}} >Tom is in a big hurry.</h4>
 
           </div>
         </div>

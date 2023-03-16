@@ -1,0 +1,8 @@
+.notyfication {
+    width: 600px;
+    margin: 0 auto;
+}
+.notifi_block {
+    display: flex;
+    justify-content: center;
+}
