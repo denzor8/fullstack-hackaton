@@ -1,32 +1,78 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+//contexts
+import ProductContextProvider from './pages/Store/contexts/ProductContextProvider'
+import LikeContextProvider from './pages/Store/contexts/CustomContext'
+import CartContextProvider from './pages/Store/contexts/CartContextProvider'
+import AuthContextProvider from './contexts/authContext';
+import ProfileContextProvider from './contexts/profileContext';
 // pages 
 import SignIn from './pages/SignIn/SignIn';
 import ProductsListPage from './pages/ProductListPage/ProductsListPage';
-import AuthContextProvider from './contexts/authContext';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import MessagesPage from './pages/MessagesPage/MessagesPage';
-import ProfileContextProvider from './contexts/profileContext';
 import NotyficationPage from './pages/NotyficationPage/NotyficationPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+import MarketPage from './pages/MarketPage/MarketPage';
 
 const MainRoutes = () => {
 	// const token = localStorage.getItem('token');
 	const token = true;
+	const PUBLIC_ROUTES = [
+		{
+			link: '/',
+			element: <ProductsListPage />,
+			id: 1,
+		},
+		{
+			link: '/signIn',
+			element: <SignIn />,
+			id: 2,
+		},
+		{
+			link: '/profile',
+			element: <ProfilePage />,
+			id: 3,
+		},
+		{
+			link: '/message',
+			element: <MessagesPage />,
+			id: 4,
+		},
+		{
+			link: '/notifications',
+			element: <NotyficationPage />,
+			id: 5,
+		},
+		{
+			link: '/favorites',
+			element: <FavoritesPage />,
+			id: 6,
+		},
+		{
+			link: '/market',
+			element: <MarketPage />,
+			id: 6,
+		},
+
+	]
 	return (
 		<>
-			<ProfileContextProvider>
-				<AuthContextProvider>
-					<Routes>
-						<Route path='/' element={token ? <ProductsListPage /> : <SignIn />} />
-						<Route path='/signIn' element={<SignIn />} />
-						<Route path='/profile' element={token ? <ProfilePage /> : <SignIn />} />
-						<Route path='/message' element={token ? <MessagesPage /> : <SignIn />} />
-						<Route path='/notifications' element={token ? <NotyficationPage/> : <SignIn />} />
-						<Route path='/favorites' element={token ? <FavoritesPage/> : <SignIn />} />
-					</Routes>
-				</AuthContextProvider>
-			</ProfileContextProvider>
+			<ProductContextProvider>
+				<LikeContextProvider>
+					<CartContextProvider>
+						<ProfileContextProvider>
+							<AuthContextProvider>
+								<Routes>
+									{PUBLIC_ROUTES.map((item) => (
+										<Route path={item.link} element={token ? item.element : <SignIn />} key={item.id} />
+									))}
+								</Routes>
+							</AuthContextProvider>
+						</ProfileContextProvider>
+					</CartContextProvider>
+				</LikeContextProvider>
+			</ProductContextProvider>
 		</>
 	);
 }

@@ -116,6 +116,11 @@
 }
 .card_post {
 	padding-top: 1rem;
+	transition-duration: 0.2s;
+	&:hover{
+		// background-color: #acacac;
+		opacity: 0.7;
+	}
 }
 .card-post_images {
 	display: flex;

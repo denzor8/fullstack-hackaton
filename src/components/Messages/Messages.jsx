@@ -7,16 +7,13 @@ import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SendIcon from '@mui/icons-material/Send';
 import EmojiPicker from 'emoji-picker-react';
-import styles from "./styles/Chat.module.css";
+import styles from "./styles/Chat.module.scss";
 import icon from './images/emoji.svg';
 
 const Messages = () => {
   const [text, setText] = React.useState('');
-  // messages and emoji 
   // const { search } = useLocation();
   // const navigate = useNavigate();
-  const [params, setParams] = useState({ room: "", user: "" });
-  const [state, setState] = useState([]);
   const [message, setMessage] = useState("");
   const [isOpen, setOpen] = useState(false);
   const [users, setUsers] = useState(0);

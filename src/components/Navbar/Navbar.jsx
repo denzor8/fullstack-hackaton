@@ -13,6 +13,7 @@ import icon3 from './img/lists.png'
 import icon4 from './img/prof.png'
 import icon5 from './img/more.png'
 import icon6 from '.././Profile/img/chaika.jpeg'
+import StoreIcon from '@mui/icons-material/Store';
 //
 import { useNavigate } from 'react-router-dom'
 import ModalBlock from '../ModalBlock/ModalBlock'
@@ -135,7 +136,9 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className='twiiter_icons cu-p'>
+          <div
+            
+            className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
                 src={icon5}
@@ -147,6 +150,18 @@ const Navbar = () => {
               </Typography>
             </div>
           </div>
+          {/* tweet market */}
+          <div
+            onClick={() => navigate('/market')}
+            className='twiiter_icons cu-p'>
+            <div className='d-flex homeIcon'>
+            <StoreIcon sx={{color:'#fff', marginRight:1}}/>
+              <Typography variant="h6" >
+                Tweet Market
+              </Typography>
+            </div>
+          </div>
+
         </div>
         <>
           <Button

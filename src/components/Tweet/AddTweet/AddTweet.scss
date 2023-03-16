@@ -80,3 +80,27 @@
 		color: #3aa2f2;
 	}
 }
+
+
+.emoji {
+  width: 40px;
+  cursor: pointer;
+  position: relative;
+}
+
+.emoji img {
+  vertical-align: middle;
+}
+
+.emojies {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+}
+.addTweetEmojies{
+  position: absolute;
+  left: 50%;
+  transform: translatey(115%);
+  bottom: 100%;
+}

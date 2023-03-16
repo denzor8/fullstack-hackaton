@@ -4,7 +4,8 @@ import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import TextLimitProgress from '@mui/icons-material/TextSnippetOutlined';
 import { useProfile } from '../../../contexts/profileContext';
-
+import styles from '../../Messages/styles/Chat.module.scss'
+import EmojiPicker from 'emoji-picker-react';
 import {
 	IconButton,
 	Paper,
@@ -24,14 +25,13 @@ const AddTweet = ({ maxRows }) => {
 	const textCount = maxLength;
 	const [image, setImage] = React.useState(null);
 	const [emoji, setEmoji] = useState(null);
+	const [message, setMessage] = useState("");
+	const [isOpen, setOpen] = useState(false);
+	const [users, setUsers] = useState(0);
 
 	const handleImageChange = (e) => {
 		setImage(e.target.files[0]);
 	};
-
-
-
-
 	const handleChangeTextArea = (e) => {
 		if (e.currentTarget && text.length <= 280) {
 			setText(e.currentTarget.value)
@@ -42,7 +42,7 @@ const AddTweet = ({ maxRows }) => {
 
 		setText('');
 	};
-
+	const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
 
 	return (
 		<div className="addForm">
@@ -61,7 +61,7 @@ const AddTweet = ({ maxRows }) => {
 					placeholder="What’s happening?" />
 			</div>
 			<div className="addFormBottom">
-				<div className="tweetFooter addFormBottomActions">
+				<div className="tweetFooter addFormBottomActions emoji">
 					<IconButton color='primary' >
 						<label
 							className='file__input'
@@ -76,9 +76,21 @@ const AddTweet = ({ maxRows }) => {
 							onChange={handleImageChange}
 						/>
 					</IconButton>
-					<IconButton sx={{marginLeft:5}} color='primary' >
-						<EmojiIcon style={{ fontSize: 26,  }} />
-					</IconButton>
+					{/* <div className='emoji'> */}
+					<div>
+						<IconButton
+							onClick={() => setOpen(!isOpen)}
+							sx={{ marginLeft: 5 }} color='primary' >
+							<EmojiIcon
+
+								style={{ fontSize: 26, }} />
+						</IconButton>
+						{isOpen && (
+							<div className='addTweetEmojies'>
+								<EmojiPicker onEmojiClick={onEmojiClick} />
+							</div>
+						)}
+					</div>
 				</div>
 				<div className="addFormBottomRight">
 					{text && (
