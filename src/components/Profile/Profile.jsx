@@ -143,7 +143,7 @@ const Profile = () => {
 									<IconButton color="secondary" >
 										<CalendarMonthIcon />
 									</IconButton>
-									<span>Joined September 2011</span>
+									<span>Joined March 2023</span>
 									{/* data end*/}
 								</div>
 							</div>

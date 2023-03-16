@@ -34,14 +34,11 @@ const reducer = (state = INIT_STATE, action) => {
 const API = 'http://35.234.109.231/api/account/customization/';
 const ProfileContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
-	const [visibleEditProfile, setVisibleEditProfile] = React.useState(false);
+	const [visibleEditProfile, setVisibleEditProfile] = useState(false);
 	const [avatar, setAvatar] = useState(null)
 	const handlePhotoChange = (e) => {
 		setAvatar(e.target.files[0]);
 	};
-	// const updatedAvatar = (file) => { 
-	// 	setAvatar(file);
-	// }
 
 	const handleClickOpenEditProfile = () => {
 		setVisibleEditProfile(true);
@@ -58,11 +55,24 @@ const ProfileContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
 	const getProfile = async () => {
-		const { data } = await axios(`${API}`);
-		dispatch({
-			type: "GET_PROFILE",
-			payload: data,
-		});
+		try {
+			const tokens = JSON.parse(localStorage.getItem('tokens'));
+			const Authorization = `Bearer ${tokens.access}`;
+			const config = {
+				headers: {
+					Authorization
+				}
+			};
+			const { data } = await axios(`${API} ,${config}`);
+			dispatch({
+				type: "GET_PROFILE",
+				payload: data,
+			});
+		}
+		catch (e) {
+			console.log(e);
+		}
+
 	}
 
 	const getProductDetails = async () => {
@@ -83,7 +93,6 @@ const ProfileContextProvider = ({ children }) => {
 
 		try {
 			const tokens = JSON.parse(localStorage.getItem('tokens'));
-			// config
 			const Authorization = `Bearer ${tokens.access}`;
 			const config = {
 				headers: {
@@ -99,11 +108,11 @@ const ProfileContextProvider = ({ children }) => {
 			console.log(e)
 		}
 	}
+
 	const values = {
 		profile: state.profile,
 		profileDetails: state.profileDetails,
-		// avatar:state.avatar,
-		avatar,
+		// avatar,
 		visibleEditProfile,
 
 		getProfile,

@@ -4,7 +4,7 @@ import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import TextLimitProgress from '@mui/icons-material/TextSnippetOutlined';
 import { height } from '@mui/system';
-import { IconButton,Typography, Button, FormControl, FormGroup, TextField, Theme, } from "@mui/material";
+import { TextareaAutosize, IconButton, Typography, Button, FormControl, FormGroup, TextField, Theme, } from "@mui/material";
 //icons
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -54,7 +54,7 @@ const EditProfile = ({ maxRows }) => {
 			<div className='edit__profile-photo'>
 				<div>
 					<IconButton
-						sx={{marginRight: 10}}
+						sx={{ marginRight: 10 }}
 						color='primary' >
 						<label
 							className='file__input'
@@ -96,6 +96,8 @@ const EditProfile = ({ maxRows }) => {
 					<div style={{
 						display: 'flex',
 						flexDirection: 'column',
+						marginLeft: '15px',
+						marginBottom: '50px'
 					}}>
 						<div>
 							<TextField
@@ -114,24 +116,22 @@ const EditProfile = ({ maxRows }) => {
 						</div>
 						{/* about me */}
 						<div>
-							<TextField
-								sx={{ marginBottom: '15px', width: '80%' }}
+							<TextareaAutosize
 								autoFocus
-								id="aboutMe"
-								label="About me"
-								InputLabelProps={{
-									shrink: true,
-								}}
-								variant="filled"
-								type="name"
-								fullWidth
+								sx={{ marginBottom: '15px', width: '80%' }}
 								onChange={(e) => setAboutMe(e.target.value)}
-							/>
+								maxRows={maxRows}
+								// value={text}
+								className="edit__profile-about-me"
+								placeholder="About Me" />
 						</div>
 						{/* about me */}
 						<Button
 							sx={{ marginBottom: '5px', width: '80%' }}
-							onClick={handleSave} variant="contained" color="primary" fullWidth >Save Changes</Button>
+							onClick={handleSave}
+							variant="contained"
+							color="primary"
+							fullWidth >Save Changes</Button>
 					</div>
 				</FormGroup>
 			</FormControl>

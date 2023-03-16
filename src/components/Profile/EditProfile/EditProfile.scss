@@ -1,4 +1,4 @@
-.edit__profile-photo{
+.edit__profile-photo {
 	width: 100%;
 	height: 100px;
 	display: flex;
@@ -8,10 +8,23 @@
 .edit__profile {
 	width: 120px;
 	height: 112px;
+	margin-left: 15px;
 	& > img {
 		border-radius: 100%;
 
 		width: 100%;
-		
+	}
+}
+.edit__profile-about-me {
+	padding: 20px 0;
+	padding-left: 12px;
+	width: 80%;
+	border: 0;
+	font-size: 20px;
+	outline: none;
+	background-color: #17202a !important;
+	font-family: inherit;
+	&:focus {
+		color: #fff;
 	}
 }
