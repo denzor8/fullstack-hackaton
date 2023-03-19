@@ -25,6 +25,7 @@ import icon6 from './img/chaika.jpeg'
 // scroll to top
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
+	
 
 	return (
 		<div
@@ -60,6 +61,7 @@ function a11yProps(index) {
 const Profile = () => {
 	const [isVisible, setIsVisible] = useState(true);
 	const [value, setValue] = React.useState(0);
+	const emailAuth = localStorage.getItem('email')
 	// profile
 	const {
 		avatar,
@@ -127,7 +129,7 @@ const Profile = () => {
 					<div className='profile__block'>
 						<div className='profile__info'>
 							<h2>Davide Biscuso</h2>
-							<span>@biscuttu</span>
+							<span style={{color: 'white'}} >{emailAuth}</span>
 							<p>Product Designer</p>
 							<div className='profile__info-data'>
 								{/* location */}
