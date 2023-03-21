@@ -14,6 +14,8 @@ import MessagesPage from './pages/MessagesPage/MessagesPage';
 import NotyficationPage from './pages/NotyficationPage/NotyficationPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import MarketPage from './pages/MarketPage/MarketPage';
+import AddProduct from './components/AddProduct/AddProduct';
+import TweetsLogic from '../src/components/TweetsLogic/TweetsLogic'
 
 const MainRoutes = () => {
 	// const token = localStorage.getItem('token');
@@ -53,6 +55,11 @@ const MainRoutes = () => {
 			link: '/market',
 			element: <MarketPage />,
 			id: 6,
+		},
+		{
+			link: '/add',
+			element: <AddProduct />,
+			id: 7,
 		},
 
 	]

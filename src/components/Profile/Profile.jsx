@@ -2,15 +2,13 @@ import { Button, } from "@mui/material";
 import { height } from '@mui/system';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+// import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 //icons
 import { IconButton } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
-
 import React, { useState, useEffect } from 'react';
 import './Profile.scss'
 import prev from './img/prev.png'
@@ -62,6 +60,7 @@ const Profile = () => {
 	const [isVisible, setIsVisible] = useState(true);
 	const [value, setValue] = React.useState(0);
 	const emailAuth = localStorage.getItem('email')
+	const nameAuth = localStorage.getItem('name')
 	// profile
 	const {
 		avatar,
@@ -128,7 +127,7 @@ const Profile = () => {
 					</div>
 					<div className='profile__block'>
 						<div className='profile__info'>
-							<h2>Davide Biscuso</h2>
+							<h2>{nameAuth}</h2>
 							<span style={{color: 'white'}} >{emailAuth}</span>
 							<p>Product Designer</p>
 							<div className='profile__info-data'>
@@ -189,9 +188,9 @@ const Profile = () => {
 					<Box sx={{ width: '100%' }}>
 						<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 							<Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-								<Tab label="Tweets" {...a11yProps(0)} />
+								{/* <Tab label="Tweets" {...a11yProps(0)} />
 								<Tab label="Media" {...a11yProps(1)} />
-								<Tab label="Likes" {...a11yProps(2)} />
+								<Tab label="Likes" {...a11yProps(2)} /> */}
 							</Tabs>
 						</Box>
 						<TabPanel value={value} index={0}>

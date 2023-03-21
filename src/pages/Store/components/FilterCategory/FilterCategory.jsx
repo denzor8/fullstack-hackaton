@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Container from 'react-bootstrap/Container';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap/';
+// import Container from 'react-bootstrap/Container';
+import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap/';
 import { useProducts } from "../../contexts/ProductContextProvider";
 import { useSearchParams } from 'react-router-dom';
 import './FilterCategory.scss'

@@ -1,5 +1,5 @@
-import React, { useContext, useReducer, useState } from 'react'
-import { createContext } from 'vm'
+import axios from 'axios'
+import React, { createContext, useContext, useReducer, useState } from 'react'
 
 export const postsContext = createContext()
 export const usePosts = () => useContext(postsContext)
@@ -8,23 +8,24 @@ const INIT_STATE = {
     posts: [],
     onePosts: null
 }
-const API = 'http://35.234.109.231/api/products';
+const API = 'http://35.234.109.231/api';
 
-function reducer(state=INIT_STATE, actions) {
-    switch(actions.type) {
+function reducer(state=INIT_STATE, action) {
+    switch(action.type) {
         case 'GET_PRODUCTS': 
-            return {...state, posts: actions.payload}
+            return {...state, posts: action.payload}
         case 'GET_ONE_PRODUCT': 
-            return {...state, onePosts: actions.payload}
+            return {...state, onePosts: action.payload}
         default: 
             return state
     }
 }
-const ProductsContextProvider = ({children}) => {
+const PostsContextProvider = ({children}) => {
     const [state, dispatch ] = useReducer(reducer, INIT_STATE)
     const [like, setLike] = useState(false)
     const [favorite, setFavorite] = useState(false)
 
+    // modal
     async function getPosts() {
         try {   
             const tokens = JSON.parse(localStorage.getItem('tokens'));
@@ -34,11 +35,12 @@ const ProductsContextProvider = ({children}) => {
 					Authorization
 				}
 			};
-            let {data} = await axios(API, config)
+            let res = await axios(`${API}/post/`, config)
+            console.log(res.data.results)
 
             dispatch({
                 type: 'GET_PRODUCTS',
-                payload: data
+                payload: res.data.results
             })
         } catch(err) {
             console.log(err)
@@ -65,18 +67,28 @@ const ProductsContextProvider = ({children}) => {
         }
     }
 
-    async function createPost(newPost, id) {
+    async function createdPost(newPost, navigate) {
         try {   
             const tokens = JSON.parse(localStorage.getItem('tokens'));
 			const Authorization = `Bearer ${tokens.access}`;
 			const config = {
-				headers: {
-					Authorization
+                headers: {
+                    Authorization
 				}
 			};
-            await axios.post(`${API}/${id}`, newPost, config)
-            getProducts()
+            await axios.post(`${API}/post/`, newPost, config)
+            getPosts()
+            // console.log(state.posts)
+            navigate('/')
         } catch(err) {
+            const tokens = JSON.parse(localStorage.getItem('tokens'));
+			const Authorization = `Bearer ${tokens.access}`;
+			const config = {
+                headers: {
+                    Authorization
+				}
+			};
+            console.log(config)
             console.log(err)
         }
     }
@@ -97,7 +109,7 @@ const ProductsContextProvider = ({children}) => {
         }
     }
 
-    async function deletePost() {
+    async function deletePost(id) {
         const tokens = JSON.parse(localStorage.getItem('tokens'));
 			const Authorization = `Bearer ${tokens.access}`;
 			const config = {
@@ -107,7 +119,7 @@ const ProductsContextProvider = ({children}) => {
 			};
         try {   
             await axios.delete(`${API}/${id}`, config)
-            getProducts()
+            getPosts()
         } catch(err) {
             console.log(err)
         }
@@ -145,9 +157,10 @@ const ProductsContextProvider = ({children}) => {
         getOnePosts,
         editPost,
         deletePost,
-        createPost,
+        createdPost,
         toggleFavorites,
-        toggleLike
+        toggleLike,
+        posts: state.posts
     }
 
   return (
@@ -157,4 +170,4 @@ const ProductsContextProvider = ({children}) => {
   )
 }
 
-export default ProductsContextProvider
+export default PostsContextProvider

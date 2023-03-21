@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 
 export const authContext = React.createContext();
+export const useAuth = () => useContext(authContext);
 
 const API = 'http://35.234.109.231/api';
 
@@ -10,10 +11,11 @@ const AuthContextProvider = ({ children }) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    async function handleRegister(obj) {
+    async function handleRegister(obj, name) {
         setLoading(true);
         try {
             const res = await axios.post(`${API}/account/register/`, obj);
+            localStorage.setItem("name", name);
             console.log(res);
         } catch(err) {
             console.log(err);
@@ -37,6 +39,28 @@ const AuthContextProvider = ({ children }) => {
         }
     }
 
+    async function checkAuth() {
+        let tokens = JSON.parse(localStorage.getItem('tokens')) 
+
+        try {
+            const Authorization = `Bearer ${tokens.access}`;
+            let res = await axios.post(`${API}/account/refresh/`,
+                { refresh: tokens.refresh }, 
+                { headers: { Authorization } } 
+            );
+            localStorage.setItem('tokens', JSON.stringify({
+                refresh: tokens.refresh,
+                access: res.data.access
+            }));
+
+            let currentUser = localStorage.getItem('email'); //на всякий случай обновляем юзера
+            setCurrentUser(currentUser);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
   return (
     <authContext.Provider value={{
         currentUser,
@@ -45,7 +69,8 @@ const AuthContextProvider = ({ children }) => {
 
         setError,
         handleRegister,
-        handleLogin
+        handleLogin,
+        checkAuth
     }}>
         { children }
     </authContext.Provider>

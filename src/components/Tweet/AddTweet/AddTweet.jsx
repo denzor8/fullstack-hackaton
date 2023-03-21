@@ -17,31 +17,39 @@ import {
 } from '@mui/material';
 
 import './AddTweet.scss'
+import { usePosts } from '../../../contexts/postsContext';
+import { useNavigate } from 'react-router-dom';
 const AddTweet = ({ maxRows }) => {
 	// const { avatar, handlePhotoChange } = useProfile();
+	const navigate = useNavigate()
 	const [text, setText] = React.useState('');
 	const textLimitPercent = Math.round((text.length / 280) * 100);
 	const maxLength = 281 - text.length;
 	const textCount = maxLength;
-	const [image, setImage] = React.useState(null);
+	const [images, setImage] = React.useState(null);
 	const [emoji, setEmoji] = useState(null);
 	const [message, setMessage] = useState("");
 	const [isOpen, setOpen] = useState(false);
 	const [users, setUsers] = useState(0);
+	const {createdPost, posts} = usePosts()
 
 	const handleImageChange = (e) => {
 		setImage(e.target.files[0]);
 	};
 	const handleChangeTextArea = (e) => {
-		if (e.currentTarget && text.length <= 280) {
-			setText(e.currentTarget.value)
+		if (e.target && text.length <= 280) {
+			setText(e.target.value)
 		}
 	}
 
-	const handleClickAddTweet = () => {
+	function handleSave() {
+        let newProduct = {
+            "media": images,
+            "descriptions": text
+        }
+        createdPost(newProduct, navigate)
+    }
 
-		setText('');
-	};
 	const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
 
 	return (
@@ -74,6 +82,7 @@ const AddTweet = ({ maxRows }) => {
 							id="imageUpload"
 							style={{ display: "none" }}
 							onChange={handleImageChange}
+							placeholder='Media' 
 						/>
 					</IconButton>
 					{/* <div className='emoji'> */}
@@ -113,7 +122,7 @@ const AddTweet = ({ maxRows }) => {
 							</div>
 						</>
 					)}
-					<Button onClick={handleClickAddTweet} disabled={text.length >= 280} color='primary' variant="contained" >
+					<Button onClick={handleSave} disabled={text.length >= 280} color='primary' variant="contained" >
 						Tweet
 					</Button>
 				</div>
