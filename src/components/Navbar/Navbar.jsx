@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Typography,
   Button,
@@ -18,14 +18,22 @@ import StoreIcon from '@mui/icons-material/Store';
 import { useNavigate } from 'react-router-dom'
 import ModalBlock from '../ModalBlock/ModalBlock'
 import AddTweet from '../Tweet/AddTweet/AddTweet'
-
 import './Navbar.scss'
 import { useProfile } from '../../contexts/profileContext';
+import { useAuth } from '../../contexts/authContext';
+
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [visibleAddTweet, setVisibleAddTweet] = React.useState(false);
   const { avatar, setAvatar } = useProfile();
+  const {checkAuth} = useAuth()
   
+  React.useEffect(() => {
+    if (localStorage.getItem("tokens")) {
+      checkAuth();
+    }
+  }, []);
 
   const handleClickOpenAddTweet = () => {
     setVisibleAddTweet(true);
@@ -33,6 +41,7 @@ const Navbar = () => {
   const onCloseAddTweet = () => {
     setVisibleAddTweet(false);
   }
+
   <>
     <Button
       onClick={handleClickOpenAddTweet}

@@ -51,7 +51,7 @@ function SignIn() {
       'password2': passwordConfirm,
       'date_of_birth': data
     }
-    handleRegister(obj);
+    handleRegister(obj, name);
     handleCloseModal()
     handleClickOpenSignIn()
   };
