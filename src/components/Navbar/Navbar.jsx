@@ -27,7 +27,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [visibleAddTweet, setVisibleAddTweet] = React.useState(false);
   const { avatar, setAvatar } = useProfile();
-  const {checkAuth} = useAuth()
+  const {checkAuth, logout, handleLogout} = useAuth()
   
   React.useEffect(() => {
     if (localStorage.getItem("tokens")) {
@@ -123,8 +123,8 @@ const Navbar = () => {
                 alt=""
                 width={25}
                 height={22} />
-              <Typography variant="h6" >
-                Lists
+              <Typography variant="h6"  onClick={() => handleLogout(navigate)} >
+                Logout
               </Typography>
             </div>
           </div>

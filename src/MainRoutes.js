@@ -16,6 +16,7 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import MarketPage from './pages/MarketPage/MarketPage';
 import AddProduct from './components/AddProduct/AddProduct';
 import TweetsLogic from '../src/components/TweetsLogic/TweetsLogic'
+import DetailsPage from './pages/DetailsPage/DetailsPage';
 
 const MainRoutes = () => {
 	// const token = localStorage.getItem('token');
@@ -61,7 +62,11 @@ const MainRoutes = () => {
 			element: <AddProduct />,
 			id: 7,
 		},
-
+		{
+			link: '/details/:id',
+			element: <DetailsPage/>,
+			id: 8,
+		},
 	]
 	return (
 		<>

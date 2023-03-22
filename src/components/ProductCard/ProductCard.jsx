@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { display } from '@mui/system';
-import TextField from '@mui/material/TextField';
 import './ProductCard.scss'
 import {
-  Button,
   IconButton,
 } from "@mui/material";
-import Modal from '@mui/material/Modal';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { usePosts } from '../../contexts/postsContext';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -29,13 +20,20 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const ProductCard = () => {
+const ProductCard = ({card, dbcard}) => {
   const [isVisible, setIsVisible] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleCloses = () => setOpen(false);
-  const {posts} = usePosts()
+  const {posts, deletePost, getOnePosts, toggleLike, setLikeStorage, likeProduct} = usePosts()
+  const navigate = useNavigate()
+  const [like, setLike] = useState(false)
+
+
+  useEffect(() => {
+    setLikeStorage()
+  }, [])
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -55,6 +53,25 @@ const ProductCard = () => {
     setAnchorEl(null);
   };
 
+   // likes
+  function addLike() {
+    let STlikes = JSON.parse(localStorage.getItem("likes"));
+    dbcard.likes += 1;
+    likeProduct(dbcard);
+    STlikes.push(dbcard);
+    localStorage.setItem("likes", JSON.stringify(STlikes));
+    setLike(true);
+  }
+  
+  function disLike(id) {
+    dbcard.likes -= 1
+    likeProduct(dbcard)
+    let STlikes = JSON.parse(localStorage.getItem('likes'))
+    STlikes = STlikes.map((elem) => elem.id !== id)
+    localStorage.setItem('likes', JSON.stringify(STlikes))
+    setLike(false)
+  }
+
   return (
         <div className="card_post p16">
           <div style={{ display: 'flex', alignItems: 'center' }} >
@@ -64,9 +81,7 @@ const ProductCard = () => {
 
             <div style={{ paddingLeft: '10px' }} >
               <div style={{ display: 'flex', alignItems:'center'}} >
-                {posts?.map(item => (
-                  <h4 key={item.id} style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }}>{item.owner}</h4>
-                ))}
+                  <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }}>{card.owner}</h4>
                   {/* <span style={{ paddingLeft: '5px', color: '#8899A6' }} >@johndue 23</span> */}
                   <div style={{ paddingLeft: '18.5rem', color: '#8899A6', fontSize: '13px'}} >
                               <IconButton
@@ -98,19 +113,19 @@ const ProductCard = () => {
                                 <MenuItem>
                                   Edit
                                 </MenuItem>
-                                <MenuItem >
+                                <MenuItem onClick={() => deletePost(card.id)} >
                                   Delete
                                 </MenuItem>
                               </Menu>
                   </div>
               </div>
 
-              <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '500px', color: 'white'}} >ff</h4>
+              <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '500px', color: 'white'}} >{card.descriptions}</h4>
 
             </div>
           </div>
 
-          <img style={{ paddingLeft: '3.5rem' }} src="../../../image/Container.png" alt="" />
+          <img onClick={() => navigate(`/details/${card.id}`)} style={{ paddingLeft: '3.5rem' }} src="../../../image/Container.png" alt="" />
           <div className="card-post_images">
             <div style={{ display: 'flex', alignItems: 'center' }} >
               <span className='card-post_span' >61</span>
@@ -121,11 +136,27 @@ const ProductCard = () => {
               <img style={{ paddingLeft: '10px' }} src="../../../image/post_icon-2.png" alt="" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }} >
-              <span className='card-post_span_like' >6.2K</span>
-              <img style={{ paddingLeft: '10px' }} src="../../../image/post_icon-3.png" alt="" />
+              <h1>{dbcard.likes}</h1>
+            {like ? (
+              <button
+                onClick={() => disLike(dbcard.id)}
+                className="prd_content_btn_2"
+                style={{ color: "white" }}
+              >
+                Dislike
+              </button>
+            ) : (
+              <button
+                style={{ background: "red" }}
+                onClick={() => addLike()}
+                className="prd_content_btn_2"
+              >
+                Like
+              </button>
+            )}
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }} >
-              <span className='card-post_span' >61</span>
+              <span  className='card-post_span' >61</span>
               <img style={{ paddingLeft: '10px' }} src="../../../image/post_icon-4.png" alt="" />
             </div>
           </div>
