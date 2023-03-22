@@ -65,24 +65,19 @@ const MainRoutes = () => {
 			id: 7,
 		},
 		{
-			link: '/add',
-			element: <AddProduct />,
-			id: 8,
-		},
-		{
 			link: '/like',
 			element: <LikePage />,
-			id: 9,
+			id: 8,
 		},
 		{
 			link: '/admin',
 			element: <CheckAdmin />,
-			id: 10,
+			id: 9,
 		},
     {
       link: "/editProduct/:id",
       element: <EditProductPage />,
-      id: 11,
+      id: 10,
     },
     {
       link: "/addProduct",
