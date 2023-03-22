@@ -4,37 +4,32 @@ import axios from 'axios'
 export const profileContext = React.createContext();
 export const useProfile = () => useContext(profileContext);
 
-// const API = 'http://35.234.109.231/api/account/detail/';
-
-// при регисрации нужно логин прописать 
-// avatar 
-// name 
-// abaout me
-
 
 const INIT_STATE = {
-	profile: [],
-	profileDetails: null,
-	avatar: null,
+  first_name: "",
+  last_name: "",
+  email: "",
+  profile_image: null,
 };
 
-const reducer = (state = INIT_STATE, action) => {
-	switch (action.type) {
-		case "GET_PROFILE":
-			return { ...state, profile: action.payload };
-		case "GET_PROFILE_DETAILS":
-			return { ...state, profileDetails: action.payload };
-		case "GET_PROFILE_AVATAR":
-			return { ...state, avatar: action.payload };
-		default:
-			return state;
-	}
-};
+function reducer(state = INIT_STATE, action) {
+  switch (action.type) {
+    case "GET_CURRENT_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    default:
+      return state;
+  }
+}
 
 const API = 'http://35.234.109.231/api/account/customization/';
+
 const ProfileContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
 	const [visibleEditProfile, setVisibleEditProfile] = useState(false);
+	const [error ,setError] = useState(false);
 	const [avatar, setAvatar] = useState(null)
 	const handlePhotoChange = (e) => {
 		setAvatar(e.target.files[0]);
@@ -46,83 +41,142 @@ const ProfileContextProvider = ({ children }) => {
 	const onCloseEditProfile = () => {
 		setVisibleEditProfile(false);
 	}
-	const deletePhoto = () => {
-		if (avatar) {
-			avatar.remove();
-		}
-	}
 
 	const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-	const getProfile = async () => {
-		try {
-			const tokens = JSON.parse(localStorage.getItem('tokens'));
-			const Authorization = `Bearer ${tokens.access}`;
-			const config = {
-				headers: {
-					Authorization
-				}
-			};
-			const { data } = await axios(`${API} ,${config}`);
-			dispatch({
-				type: "GET_PROFILE",
-				payload: data,
-			});
-		}
-		catch (e) {
-			console.log(e);
-		}
+  async function getProfile() {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
 
-	}
+      //config
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
 
-	const getProductDetails = async () => {
-		dispatch({
-			type: "GET_PROFILE_DETAILS",
-			payload: null,
-		});
+      const url = `${API}`;
+      const res = await axios(url, config);
+      console.log(res);
+      const data = res.data[0];
+      console.log("CURRENT USER", data);
 
-		const { data } = await axios(`${API}`);
-		dispatch({
-			type: "GET_PROFILE_DETAILS",
-			payload: data,
-		});
-	};
+      dispatch({
+        type: "GET_CURRENT_USER",
+        payload: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-	async function saveEditedProfile(newProfile) {
-		setLoading(true);
+  async function saveEditProfile(userData) {
+    try {
+      const newData = new FormData();
 
-		try {
-			const tokens = JSON.parse(localStorage.getItem('tokens'));
-			const Authorization = `Bearer ${tokens.access}`;
-			const config = {
-				headers: {
-					Authorization
-				}
-			};
-			const res = await axios.patch(`${API}`, newProfile, config);
-			console.log(res);
-			getProfile();
+      
+      newData.append("first_name", userData.first_name);
+      newData.append("last_name", userData.last_name);
+      newData.append("name", userData.name);
+      // newData.append("date_birth", userData.date_birth);
+      // newData.append("email", userData.email);
+			// newData.append("password", userData.password);
+			// newData.append("bio", userData.bio);
+      // newData.append("city", userData.city);
 
-		}
-		catch (e) {
-			console.log(e)
-		}
-	}
+      if (typeof userData.avatar === "object") {
+        newData.append("avatar", userData.avatar);
+      }
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+
+      //config
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization, //ключ со значением
+        },
+      };
+
+      await axios.post(`${API}`, newData, config);
+      getProfile();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // async function resetPassword(email, navigate) {
+  //   try {
+  //     const tokens = JSON.parse(localStorage.getItem("tokens"));
+
+  //     //config
+  //     const Authorization = `Bearer ${tokens.access}`;
+  //     const config = {
+  //       headers: {
+  //         Authorization, //ключ со значением
+  //       },
+  //     };
+
+  //     console.log(email);
+
+  //     await axios.post(`${API}/account/reset_password/`, email, config);
+
+  //     console.log("RESET PASSWORD WORKED!!!");
+
+  //     getProfile();
+  //     navigate("/reset");
+  //   } catch (err) {
+  //     console.log(err);
+  //     setError(Object.values(err.response.data).flat(2));
+  //   }
+  // }
+
+  // const [checkReset, setCheckReset] = useState(false);
+
+  // async function setNewPassword(newData, handleOpen, navigate) {
+  //   try {
+  //     const tokens = JSON.parse(localStorage.getItem("tokens"));
+
+  //     //config
+  //     const Authorization = `Bearer ${tokens.access}`;
+  //     const config = {
+  //       headers: {
+  //         Authorization, //ключ со значением
+  //       },
+  //     };
+
+  //     console.log(newData);
+
+  //     await axios.post(
+  //       `${API}/account/reset_password_complete/`,
+  //       newData,
+  //       config
+  //     );
+
+  //     setCheckReset(true);
+  //     console.log("Password reset WORKED!!!");
+  //     handleOpen();
+  //     setTimeout(() => navigate("/profile"), 3000);
+  //     setCheckReset(false);
+  //     getProfile();
+  //   } catch (err) {
+  //     setError(Object.values(err.response.data).flat(2));
+  //     console.log(err);
+  //   }
+  // }
+
 
 	const values = {
-		profile: state.profile,
-		profileDetails: state.profileDetails,
-		// avatar,
+		user: state.user,
+		avatar: state.avatar,
 		visibleEditProfile,
 
 		getProfile,
-		getProductDetails,
-		saveEditedProfile,
 		handleClickOpenEditProfile,
 		onCloseEditProfile,
 		setAvatar,
 		handlePhotoChange,
-		deletePhoto
+		saveEditProfile,
 	}
 	return (
 		<profileContext.Provider value={values}>{children}</profileContext.Provider>

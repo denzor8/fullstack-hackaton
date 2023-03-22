@@ -2,6 +2,14 @@ import React, { useEffect } from "react";
 import { useLike } from "../../contexts/CustomContext";
 import { useCart } from "../../contexts/CartContextProvider";
 import { useNavigate } from "react-router-dom";
+// mui 
+import { Button, TextField, Typography, IconButton } from "@mui/material";
+//icons
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import AddIcon from '@mui/icons-material/Add';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default function Like() {
 	const navigate = useNavigate();
@@ -20,11 +28,18 @@ export default function Like() {
 		<div className="overlay">
 			<div className="drawer">
 				<h2 className="d-flex justify-between mb-30">Избранное
-					<img
-						onClick={() => navigate('/')}
+					{/* <img
+						onClick={() => navigate('/market')}
 						className="cu-p"
 						src="/img/btn-remove.svg"
-						alt="Close" />
+						alt="Close" /> */}
+
+					<IconButton
+						onClick={() => navigate('/market')}
+						color='primary'
+						className="cu-p">
+						<CloseIcon sx={{ color: "#000" }} />
+					</IconButton>
 				</h2>
 
 				<div className="items">
@@ -51,20 +66,25 @@ export default function Like() {
 							</div>
 							<div>
 								<div>
-									<img
+									<IconButton
 										onClick={() => deleteProductFromLike(product.item.id)}
-										className="removeBtn"
-										src="/img/btn-remove.svg"
-										alt="Remove" />
+										color='warning'
+										className="cu-p removeBtn">
+										<DeleteOutlineIcon />
+									</IconButton>
 								</div>
 								<div>
-									<img
+									<IconButton
 										onClick={() => addProductToCart(product.item)}
-										className="removeBtn"
-										src={
-											checkProductInCart(product.item.id)
-												? "/img/btn-checked.svg" : "/img/btn-plus.svg"}
-										alt="Remove" />
+										color="primary"
+										className="cu-p">
+										{
+											checkProductInCart(product.item.id) ?
+												<CheckIcon sx={{ color: 'green' }} />
+												:
+												<AddIcon />
+										}
+									</IconButton>
 								</div>
 							</div>
 						</div>
@@ -89,7 +109,9 @@ export default function Like() {
 						onClick={likeCleaner}
 						className="greenButton">
 						Оформить заказ
-						<img src="/img/arrow.svg" alt="Arrow" />
+						<IconButton color='primary' >
+							<ArrowForwardIcon sx={{ color: '#fff' }} />
+						</IconButton>
 					</button>
 				</div>
 			</div>

@@ -26,9 +26,10 @@ import { useAuth } from '../../contexts/authContext';
 const Navbar = () => {
   const navigate = useNavigate();
   const [visibleAddTweet, setVisibleAddTweet] = React.useState(false);
-  const { avatar, setAvatar } = useProfile();
-  const {checkAuth} = useAuth()
-  
+  const { handleLogout } = useAuth()
+  const { avatar, setAvatar, } = useProfile();
+  const { checkAuth } = useAuth()
+
   React.useEffect(() => {
     if (localStorage.getItem("tokens")) {
       checkAuth();
@@ -146,7 +147,7 @@ const Navbar = () => {
           </div>
 
           <div
-            
+
             className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
               <img
@@ -164,7 +165,7 @@ const Navbar = () => {
             onClick={() => navigate('/market')}
             className='twiiter_icons cu-p'>
             <div className='d-flex homeIcon'>
-            <StoreIcon sx={{color:'#fff', marginRight:1}}/>
+              <StoreIcon sx={{ color: '#fff', marginRight: 1 }} />
               <Typography variant="h6" >
                 Tweet Market
               </Typography>
@@ -186,14 +187,14 @@ const Navbar = () => {
 
         <div className='container_navbar__profile' style={{ display: 'flex', alignItems: 'center' }} >
           <div>
-            <img src={avatar? avatar : icon6} alt="" className="card_user_icon" />
+            <img src={avatar ? avatar : icon6} alt="" className="card_user_icon" />
           </div>
 
           <div style={{ paddingLeft: '10px' }} >
             <div>
               <h4 style={{ margin: 0, color: 'white', fontSize: '15px', fontWeight: '700px' }} >Devon Lane</h4>
               <h4 style={{ margin: 1, color: '#8899A6' }} >@johndue 23</h4>
-
+              <button onClick={() => handleLogout(navigate)}>Logout</button>
             </div>
 
           </div>

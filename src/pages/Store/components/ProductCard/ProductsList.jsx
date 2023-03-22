@@ -24,7 +24,7 @@ const ProductsList = () => {
 
   return (
     <div>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap mb-50">
         {currentData().map(item => (
           <ProductCard key={item.id} item={item} />
         ))}
