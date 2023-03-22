@@ -1,10 +1,15 @@
+.details__baseContent{
+	margin-left: 350px;
+	max-width: 1300px;
+}
 .details__content {
 	background-color: #fff;
 	height: 100vh;
 	border-radius: 20px;
 	border: 2px solid #fff;
 	display: flex;
-	margin: -30px auto;
+	margin-top: 20px;
+	margin-left: 70px;
 }
 .details__card {
 	margin: 50px 20px;

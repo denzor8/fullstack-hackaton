@@ -7,6 +7,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowSvg from '../../img/arrow.svg'
+import emptyIcon from '../../img/empty-cart.jpg'
 const Basket = () => {
   const { getCart, cart, closeCart, deleteProductFromCart, changeProductCount } = useCart()
   console.log(cart);
@@ -95,7 +96,7 @@ const Basket = () => {
           </>
         ) : (
           <div class="cartEmpty d-flex align-center justify-center flex-column flex">
-            <img class="mb-20" width="120px" height="120px" src="/img/empty-cart.jpg" alt="Empty" />
+            <img class="mb-20" width="120px" height="120px" src={emptyIcon} alt="Empty" />
             <h2>Корзина пустая</h2>
             <p class="opacity-6">Добавьте хотя бы один товар, чтобы сделать заказ.</p>
             <button onClick={closeCart} class="greenButton">
