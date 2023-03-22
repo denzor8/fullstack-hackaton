@@ -43,7 +43,7 @@ const ProductDetails = () => {
 			{cartOpened && <Basket />}
 			<div className='details__baseContent'>
 				<Header />
-				<div className="details wrapper clear">
+				<div className="wrapper clear">
 					{productDetails ? (
 						<>
 							<div className='details__content'>

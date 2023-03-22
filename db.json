@@ -1245,7 +1245,16 @@
     {
       "id": 1,
       "likes": 1,
-      "comments": []
+      "comments": [
+        {
+          "item": "sdv",
+          "id": 1679478212862
+        },
+        {
+          "item": "fdbdfbdf",
+          "id": 1679478212862
+        }
+      ]
     },
     {
       "id": 2,
