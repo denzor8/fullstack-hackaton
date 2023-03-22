@@ -19,7 +19,7 @@ const CheckAdmin = () => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (userName === currentUser.username && password === currentUser.password) {
-			alert('Здраствуй раб')
+			alert('Добро пожаловать в админскую платофрму')
 			let updatedUser = { ...currentUser, isAdmin: true }
 			setCurrentUser(updatedUser)
 			localStorage.setItem("currentUser", JSON.stringify(updatedUser));

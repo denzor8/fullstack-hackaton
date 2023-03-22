@@ -86,7 +86,7 @@ const AddTweet = ({ maxRows }) => {
 						/>
 					</IconButton>
 					{/* <div className='emoji'> */}
-					<div>
+					<div className='d-flex align-center justify-center'>
 						<IconButton
 							onClick={() => setOpen(!isOpen)}
 							sx={{ marginLeft: 5 }} color='primary' >

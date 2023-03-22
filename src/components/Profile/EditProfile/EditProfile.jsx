@@ -19,24 +19,25 @@ const EditProfile = ({ maxRows }) => {
 	const [isVisible, setIsVisible] = useState(true);
 	const [value, setValue] = React.useState(0);
 	const {
+		user,
 		avatar,
-		visibleEditProfile,
-		getCurrentUser,
-		getProductDetails,
-		saveEditedProfile,
+		saveEditProfile,
 		handleClickOpenEditProfile,
 		onCloseEditProfile,
-		setAvatar,
 		handlePhotoChange,
 		deletePhoto
+		// visibleEditProfile,
+		// getCurrentUser,
+		// getProductDetails,
 	} = useProfile();
+
 	// profile
-	// const [avatar, setAvatar] = useState(null)
+	const [userData, setUserData] = useState(user);
 	const [name, setName] = useState('')
 	const [aboutMe, setAboutMe] = useState('');
-	useEffect(() => {
-		// setError(false);
-	}, []);
+	// useEffect(() => {
+	// 	// setError(false);
+	// }, []);
 
 	function handleSave() {
 		let obj = {
@@ -44,7 +45,7 @@ const EditProfile = ({ maxRows }) => {
 			'login': name,
 			'aboutMe': aboutMe,
 		}
-		// saveEditedProfile(obj);
+		saveEditProfile(obj);
 		onCloseEditProfile()
 	};
 

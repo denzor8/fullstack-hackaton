@@ -60,15 +60,15 @@
 		position: relative;
 
 		&:hover {
-			img {
+			button {
 				transform: translateX(5px);
 			}
 		}
 
-		img {
+		button {
 			position: absolute;
 			right: 30px;
-			top: 20px;
+			bottom: 5px;
 			transition: transform 0.15s ease-in-out;
 		}
 	}

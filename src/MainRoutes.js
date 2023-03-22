@@ -18,6 +18,15 @@ import AddProduct from './components/AddProduct/AddProduct';
 import TweetsLogic from '../src/components/TweetsLogic/TweetsLogic'
 import DetailsPage from './pages/DetailsPage/DetailsPage';
 
+
+// store pages
+import LikePage from './pages/Store/pages/LikePage/LikePage'
+import CheckAdmin from './pages/Store/pages/AdminPage/CheckAdmin';
+import EditProductPage from "./pages/Store/pages/EditProductPage/EditProductPage";
+import AddProductPage from "./pages/Store/pages/AddProductPage/AddProductPage";
+import ProductDetailsPage from "./pages/Store/pages/ProductDetailsPage/ProductDetailsPage";
+
+
 const MainRoutes = () => {
 	// const token = localStorage.getItem('token');
 	const token = true;
@@ -55,17 +64,32 @@ const MainRoutes = () => {
 		{
 			link: '/market',
 			element: <MarketPage />,
-			id: 6,
+			id: 7,
 		},
 		{
-			link: '/add',
-			element: <AddProduct />,
-			id: 7,
+			link: '/like',
+			element: <LikePage />,
+			id: 8,
+		},
+		{
+			link: '/admin',
+			element: <CheckAdmin />,
+			id: 9,
 		},
 		{
 			link: '/details/:id',
 			element: <DetailsPage/>,
 			id: 8,
+		},
+    {
+      link: "/editProduct/:id",
+      element: <EditProductPage />,
+      id: 10,
+    },
+    {
+      link: "/addProduct",
+      element: <AddProductPage />,
+      id: 11,
 		},
 	]
 	return (
