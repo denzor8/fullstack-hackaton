@@ -22,16 +22,24 @@ import { useNavigate } from 'react-router-dom';
 const AddTweet = ({ maxRows }) => {
 	// const { avatar, handlePhotoChange } = useProfile();
 	const navigate = useNavigate()
-	const [text, setText] = React.useState('');
+	const [text, setText] = useState('');
 	const textLimitPercent = Math.round((text.length / 280) * 100);
 	const maxLength = 281 - text.length;
 	const textCount = maxLength;
-	const [images, setImage] = React.useState(null);
+	const [images, setImage] = useState(null);
 	const [emoji, setEmoji] = useState(null);
-	const [message, setMessage] = useState("");
 	const [isOpen, setOpen] = useState(false);
 	const [users, setUsers] = useState(0);
-	const {createdPost, posts} = usePosts()
+	const { createdPost, posts } = usePosts()
+	const handleChange = ({ target: { value } }) => setText(value);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (!text) return;
+		setText("");
+	};
+
 
 	const handleImageChange = (e) => {
 		setImage(e.target.files[0]);
@@ -40,17 +48,25 @@ const AddTweet = ({ maxRows }) => {
 		if (e.target && text.length <= 280) {
 			setText(e.target.value)
 		}
+		if (!text) {
+			return setText("");
+		}
+
+
+		handleChange()
 	}
 
 	function handleSave() {
-        let newProduct = {
-            "media": images,
-            "descriptions": text
-        }
-        createdPost(newProduct, navigate)
-    }
+		let newProduct = {
+			"media": images,
+			"descriptions": text
+		}
+		createdPost(newProduct, navigate)
+		setText('')
+	}
 
-	const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
+
+	const onEmojiClick = ({ emoji }) => setText(`${text} ${emoji}`);
 
 	return (
 		<div className="addForm">
@@ -66,7 +82,8 @@ const AddTweet = ({ maxRows }) => {
 					maxRows={maxRows}
 					value={text}
 					className="addFormTextarea"
-					placeholder="What’s happening?" />
+					placeholder="What’s happening?"
+				/>
 			</div>
 			<div className="addFormBottom">
 				<div className="tweetFooter addFormBottomActions emoji">
@@ -82,7 +99,7 @@ const AddTweet = ({ maxRows }) => {
 							id="imageUpload"
 							style={{ display: "none" }}
 							onChange={handleImageChange}
-							placeholder='Media' 
+							placeholder='Media'
 						/>
 					</IconButton>
 					{/* <div className='emoji'> */}
@@ -91,7 +108,6 @@ const AddTweet = ({ maxRows }) => {
 							onClick={() => setOpen(!isOpen)}
 							sx={{ marginLeft: 5 }} color='primary' >
 							<EmojiIcon
-
 								style={{ fontSize: 26, }} />
 						</IconButton>
 						{isOpen && (

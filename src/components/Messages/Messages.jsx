@@ -12,27 +12,15 @@ import icon from './images/emoji.svg';
 
 const Messages = () => {
   const [text, setText] = React.useState('');
-  // const { search } = useLocation();
-  // const navigate = useNavigate();
-  const [message, setMessage] = useState("");
-  const [isOpen, setOpen] = useState(false);
   const [users, setUsers] = useState(0);
-
-
-  // useEffect(() => {
-  //   socket.on("message", ({ data }) => {
-  //     setState((_state) => [..._state, data]);
-  //   });
-  // }, []);
+  const [isOpen, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
   const handleChange = ({ target: { value } }) => setMessage(value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!message) return;
-
-    // socket.emit("sendMessage", { message, params });
-
     setMessage("");
   };
 
