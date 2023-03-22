@@ -25,7 +25,7 @@ const HeaderAdmin = () => {
       <header className="d-flex justify-between align-center p-30">
         <div
           className="d-flex align-center cu-p"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/market")}
         >
           <IconButton color='primary' >
             <TwitterIcon  />
@@ -37,7 +37,7 @@ const HeaderAdmin = () => {
         </div>
         <ul className="d-flex">
           <li
-            onClick={() => navigate("/add")}
+            onClick={() => navigate("/addProduct")}
             className='mr-20 cu-p'
           >
             Добавить продукт

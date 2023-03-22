@@ -76,7 +76,7 @@ const ProductCard = ({ item }) => {
             },
             border: "1px solid purple", // добавлено для изменения обводки
           }}
-          onClick={() => navigate(`/details/${item.id}`)}
+          onClick={() => navigate(`/productsDetails/${item.id}`)}
         >
           Details
         </Button>
@@ -93,7 +93,7 @@ const ProductCard = ({ item }) => {
             },
             border: "1px solid green", // добавлено для изменения обводки
           }}
-          onClick={() => navigate(`/edit/${item.id}`)}
+          onClick={() => navigate(`/editProduct/${item.id}`)}
         >
           Edit
         </Button>
