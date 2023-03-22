@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContextProvider'
 import { useCart } from '../../contexts/CartContextProvider'
 import { useLike } from '../../contexts/CustomContext';
+//icons 
+import { IconButton, } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import './Header.scss'
 //
 // import '../../style/index.scss'
@@ -49,15 +54,18 @@ const Header = () => {
           className="d-flex align-center cu-p"
           onClick={() => navigate("/market")}
         >
-          <img width={40} height={40} src="/img/wb.svg" alt="" />
+          <IconButton color='primary' >
+            <TwitterIcon sx={{ color: '#fff' }} />
+          </IconButton>
           <div>
-            <h3 className="text-uppercase">Tweet Market</h3>
+            <h3 style={{ color: '#fff' }} className="text-uppercase">Tweet Market</h3>
           </div>
         </div>
         <ul className="d-flex">
           <li
             onClick={() => navigate("/admin")}
-            className='mr-20 cu-p'
+            style={{ color: '#fff' }}
+            className='mr-20 cu-p mt-10'
           >
             Войти как админ
           </li>
@@ -65,23 +73,29 @@ const Header = () => {
             className="mr-10 cu-p"
             onClick={() => navigate("/like")}
           >
-            <img
+            {/* <img
               width={27}
               height={27}
               src="/img/heart.svg"
-              alt="" />
+              alt="" /> */}
+            <IconButton color='primary' >
+              <FavoriteBorderIcon sx={{ color: '#fff' }} />
+            </IconButton>
           </li>
           <li
             className="mr-30 cu-p"
             onClick={() => openCart()}
           >
-            <img
+            {/* <img
               onClick={() => cartLength}
               width={23}
               height={23}
               src="/img/cart.svg"
-              alt="" />
-            <b> ${cart?.totalPrice}</b>
+              alt="" /> */}
+            <IconButton color='primary' >
+              <LocalGroceryStoreIcon sx={{ color: '#fff' }} />
+            </IconButton>
+            <b style={{ color: '#fff' }}> ${cart?.totalPrice}</b>
           </li>
         </ul>
       </header>

@@ -1,31 +1,32 @@
 .card2 {
 	border: 1px solid #f3f3f3;
-	padding: 30px;
+	padding: 32px;
 	width: 160px;
+	height: 190px;
 	background-color: #fff;
 	border-radius: 40px;
 	margin-right: 30px;
 	transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	cursor: pointer;
 
 	&:hover {
-		box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+		box-shadow: 0px 20px 35px #3aa2f2;
 		transform: translateY(-5px);
 	}
 
 	.favorite90 {
 		position: absolute;
 		cursor: pointer;
-		transition: all  0.4s ease-in-out;
+		transition: all 0.4s ease-in-out;
 		& svg:hover > path {
 			transition: all 0.4s ease-in-out;
 		}
-		& svg:hover  > path{
+		& svg:hover > path {
 			stroke: rgb(252, 180, 180);
 		}
 	}
-	
+
 	span {
 		font-size: 13px;
 		opacity: 0.5;
@@ -39,15 +40,20 @@
 	h5 {
 		font-weight: 400;
 		font-size: 14px;
+		margin-bottom: 5px;
 	}
 }
-.plus{
+.plus {
 	cursor: pointer;
 }
 
-.pagination{
+.pagination {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
+.css-wjh20t-MuiPagination-ul {
+	& > li > button {
+		color: #fff !important;
+	}
+}

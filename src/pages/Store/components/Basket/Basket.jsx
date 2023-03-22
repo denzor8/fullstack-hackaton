@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react'
 import './Basket.scss'
 import { useCart } from '../../contexts/CartContextProvider'
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography, IconButton } from "@mui/material";
+//icons
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowSvg from '../../img/arrow.svg'
 const Basket = () => {
   const { getCart, cart, closeCart, deleteProductFromCart, changeProductCount } = useCart()
   console.log(cart);
@@ -16,11 +21,12 @@ const Basket = () => {
     <div className="overlay">
       <div className="drawer">
         <h2 className="d-flex justify-between mb-30">Корзина
-          <img
+          <IconButton
             onClick={() => closeCart()}
-            className="cu-p"
-            src="/img/btn-remove.svg"
-            alt="Close" />
+            color='primary'
+            className="cu-p">
+            <CloseIcon sx={{color:"#000"}} />
+          </IconButton>
         </h2>
 
         {cart.products.length > 0 ? (
@@ -52,11 +58,17 @@ const Basket = () => {
                         } />
                     </div>
                   </div>
-                  <img
+                  {/* <img
                     onClick={() => deleteProductFromCart(product.item.id)}
                     className="removeBtn"
                     src="/img/btn-remove.svg"
-                    alt="Remove" />
+                    alt="Remove" /> */}
+                  <IconButton
+                    onClick={() => deleteProductFromCart(product.item.id)}
+                    color='warning'
+                    className="cu-p removeBtn">
+                    <DeleteOutlineIcon />
+                  </IconButton>
                 </div>
               ))}
             </div>
@@ -74,7 +86,10 @@ const Basket = () => {
                 </li>
               </ul>
               <button className="greenButton">
-                Оформить заказ <img src="/img/arrow.svg" alt="Arrow" />
+                Оформить заказ
+                <IconButton color='primary' >
+                  <ArrowForwardIcon  sx={{ color: '#fff' }} />
+                </IconButton>
               </button>
             </div>
           </>
@@ -84,12 +99,12 @@ const Basket = () => {
             <h2>Корзина пустая</h2>
             <p class="opacity-6">Добавьте хотя бы один товар, чтобы сделать заказ.</p>
             <button onClick={closeCart} class="greenButton">
-              <img src="/img/arrow.svg" alt="Arrow" />
+              <img src={ArrowSvg} alt="Arrow" />
               Вернуться назад
             </button>
           </div>
         )}
-        </div>
+      </div>
     </div>
   );
 }

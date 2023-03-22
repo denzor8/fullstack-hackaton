@@ -17,7 +17,7 @@ const AuthContextProvider = ({ children }) => {
             const res = await axios.post(`${API}/account/register/`, obj);
             localStorage.setItem("name", name);
             console.log(res);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             setError(Object.values(err.response.data).flat(2));
         } finally {
@@ -33,20 +33,20 @@ const AuthContextProvider = ({ children }) => {
             setCurrentUser(email);
             console.log(res);
             navigate('/');
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             setError([err.response.data.detail]);
         }
     }
 
     async function checkAuth() {
-        let tokens = JSON.parse(localStorage.getItem('tokens')) 
+        let tokens = JSON.parse(localStorage.getItem('tokens'))
 
         try {
             const Authorization = `Bearer ${tokens.access}`;
             let res = await axios.post(`${API}/account/refresh/`,
-                { refresh: tokens.refresh }, 
-                { headers: { Authorization } } 
+                { refresh: tokens.refresh },
+                { headers: { Authorization } }
             );
             localStorage.setItem('tokens', JSON.stringify({
                 refresh: tokens.refresh,
@@ -60,21 +60,28 @@ const AuthContextProvider = ({ children }) => {
             console.log(error);
         }
     }
+    function handleLogout(navigate) {
+        localStorage.removeItem("tokens");
+        localStorage.removeItem("email");
+        setCurrentUser(false);
+        navigate("/signIn");
+    };
 
-  return (
-    <authContext.Provider value={{
-        currentUser,
-        error,
-        loading,
+    return (
+        <authContext.Provider value={{
+            currentUser,
+            error,
+            loading,
 
-        setError,
-        handleRegister,
-        handleLogin,
-        checkAuth
-    }}>
-        { children }
-    </authContext.Provider>
-  )
+            setError,
+            handleRegister,
+            handleLogin,
+            checkAuth,
+            handleLogout
+        }}>
+            {children}
+        </authContext.Provider>
+    )
 }
 
 export default AuthContextProvider
