@@ -23,6 +23,7 @@ import LikePage from './pages/Store/pages/LikePage/LikePage'
 import CheckAdmin from './pages/Store/pages/AdminPage/CheckAdmin';
 import EditProductPage from "./pages/Store/pages/EditProductPage/EditProductPage";
 import AddProductPage from "./pages/Store/pages/AddProductPage/AddProductPage";
+import ProductDetailsPage from "./pages/Store/pages/ProductDetailsPage/ProductDetailsPage";
 
 
 const MainRoutes = () => {
@@ -83,7 +84,13 @@ const MainRoutes = () => {
       link: "/addProduct",
       element: <AddProductPage />,
       id: 11,
+		},
+    {
+      link: "/details/:id",
+      element: <ProductDetailsPage />,
+      id: 12,
     },
+		
 
 
 	]
