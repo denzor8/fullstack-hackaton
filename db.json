@@ -1240,5 +1240,75 @@
       "type": "electronics",
       "id": 160
     }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "likes": 1,
+      "comments": []
+    },
+    {
+      "id": 2,
+      "likes": 0,
+      "comments": [
+        {
+          "item": "sdf",
+          "id": 1679474276926
+        },
+        {
+          "item": "sadf",
+          "id": 1679474338175
+        },
+        {
+          "item": "sdf",
+          "id": 1679474501222
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "likes": 0,
+      "comments": [
+        {
+          "item": "sdf",
+          "id": 1679475291864
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "likes": 0,
+      "comments": [
+        {
+          "item": "cgvbn",
+          "id": 1679474992589
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "likes": 0,
+      "comments": []
+    },
+    {
+      "id": 6,
+      "likes": 0,
+      "comments": []
+    },
+    {
+      "id": 7,
+      "likes": 0,
+      "comments": []
+    },
+    {
+      "id": 8,
+      "likes": 0,
+      "comments": []
+    },
+    {
+      "id": 10,
+      "likes": 0,
+      "comments": []
+    }
   ]
 }

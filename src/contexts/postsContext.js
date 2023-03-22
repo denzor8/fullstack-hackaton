@@ -6,9 +6,13 @@ export const usePosts = () => useContext(postsContext)
 
 const INIT_STATE = {
     posts: [],
-    onePosts: null
+    onePosts: null,
+    likes: [],
+    favorites: [],
+    productsDb: []
 }
 const API = 'http://35.234.109.231/api';
+const DbAPI = 'http://localhost:8000/posts'
 
 function reducer(state=INIT_STATE, action) {
     switch(action.type) {
@@ -16,6 +20,8 @@ function reducer(state=INIT_STATE, action) {
             return {...state, posts: action.payload}
         case 'GET_ONE_PRODUCT': 
             return {...state, onePosts: action.payload}
+        case 'GET_PRODUCTS_DB': 
+            return {...state, productsDb: action.payload}
         default: 
             return state
     }
@@ -25,6 +31,13 @@ const PostsContextProvider = ({children}) => {
     const [like, setLike] = useState(false)
     const [favorite, setFavorite] = useState(false)
 
+    async function getProducts() {
+        const { data } = await axios(`${DbAPI}/${window.location.search}`);
+        dispatch({
+        type: "GET_PRODUCTS_DB",
+        payload: data,
+        });
+    }
     // modal
     async function getPosts() {
         try {   
@@ -36,11 +49,10 @@ const PostsContextProvider = ({children}) => {
 				}
 			};
             let res = await axios(`${API}/post/`, config)
-            console.log(res.data.results)
-
+            console.log(res)
             dispatch({
                 type: 'GET_PRODUCTS',
-                payload: res.data.results
+                payload: res.data
             })
         } catch(err) {
             console.log(err)
@@ -56,17 +68,16 @@ const PostsContextProvider = ({children}) => {
 					Authorization
 				}
 			};
-            let {data} = await axios(`${API}/${id}`, config)
-
+            let res = await axios(`${API}/post/${id}/`, config)
             dispatch({
-                type: 'GET_ONE_PRODUCTS',
-                payload: data
+                type: 'GET_ONE_PRODUCT',
+                payload: res.data
             })
         } catch(err) {
             console.log(err)
         }
     }
-
+    
     async function createdPost(newPost, navigate) {
         try {   
             const tokens = JSON.parse(localStorage.getItem('tokens'));
@@ -118,7 +129,7 @@ const PostsContextProvider = ({children}) => {
 				}
 			};
         try {   
-            await axios.delete(`${API}/${id}`, config)
+            await axios.delete(`${API}/post/${id}/`, config)
             getPosts()
         } catch(err) {
             console.log(err)
@@ -133,8 +144,7 @@ const PostsContextProvider = ({children}) => {
                 Authorization
             }
         };
-
-        await axios(`${API}/products/${id}/toggle_like/`, config)
+        await axios.post(`${API}/post/${id}/like/`, config)
         getPosts()
         setLike(!true)
     }
@@ -152,6 +162,16 @@ const PostsContextProvider = ({children}) => {
         setFavorite(!true)
     }
 
+    async function likeProduct(newProduct) {
+        await axios.patch(`${DbAPI}/${newProduct.id}`, newProduct);
+        getProducts();
+    }
+
+    function setLikeStorage() {
+        localStorage.setItem("likes", JSON.stringify(INIT_STATE.likes));
+        localStorage.setItem("favorites", JSON.stringify(INIT_STATE.favorites));
+    }
+
     const values = {
         getPosts,
         getOnePosts,
@@ -160,7 +180,14 @@ const PostsContextProvider = ({children}) => {
         createdPost,
         toggleFavorites,
         toggleLike,
-        posts: state.posts
+        posts: state.posts,
+        onePosts: state.onePosts,
+        deletePost,
+        like,
+        setLikeStorage,
+        likeProduct,
+        getProducts,
+        productsDb: state.productsDb
     }
 
   return (

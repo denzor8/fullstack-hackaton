@@ -26,10 +26,9 @@ import { useAuth } from '../../contexts/authContext';
 const Navbar = () => {
   const navigate = useNavigate();
   const [visibleAddTweet, setVisibleAddTweet] = React.useState(false);
-  const { handleLogout } = useAuth()
-  const { avatar, setAvatar, } = useProfile();
-  const { checkAuth } = useAuth()
-
+  const { avatar, setAvatar } = useProfile();
+  const {checkAuth, logout, handleLogout} = useAuth()
+  
   React.useEffect(() => {
     if (localStorage.getItem("tokens")) {
       checkAuth();
@@ -124,8 +123,8 @@ const Navbar = () => {
                 alt=""
                 width={25}
                 height={22} />
-              <Typography variant="h6" >
-                Lists
+              <Typography variant="h6"  onClick={() => handleLogout(navigate)} >
+                Logout
               </Typography>
             </div>
           </div>

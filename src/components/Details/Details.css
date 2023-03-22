@@ -1,0 +1,7 @@
+.details {
+    width: 600px;
+    margin: 0 auto;
+    border-left: solid 1px #3a444c;
+	border-right: solid 1px #3a444c;
+    padding: 10px;
+}

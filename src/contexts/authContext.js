@@ -55,7 +55,6 @@ const AuthContextProvider = ({ children }) => {
 
             let currentUser = localStorage.getItem('email'); //на всякий случай обновляем юзера
             setCurrentUser(currentUser);
-
         } catch (error) {
             console.log(error);
         }
@@ -67,21 +66,40 @@ const AuthContextProvider = ({ children }) => {
         navigate("/signIn");
     };
 
-    return (
-        <authContext.Provider value={{
-            currentUser,
-            error,
-            loading,
+    async function logout() {
+        const tokens = JSON.parse(localStorage.getItem('tokens'));
+        const Authorization = `Bearer ${tokens.access}`;
+        const config = {
+				headers: {
+					Authorization
+				}
+		};
+        await axios.post(`${API}/account/logout/`, config)
+    }
 
-            setError,
-            handleRegister,
-            handleLogin,
-            checkAuth,
-            handleLogout
-        }}>
-            {children}
-        </authContext.Provider>
-    )
+    function handleLogout(navigate) {
+        localStorage.removeItem("tokens");
+        localStorage.removeItem("email");
+        setCurrentUser(false);
+        navigate("/signIn");
+    };
+
+  return (
+    <authContext.Provider value={{
+        currentUser,
+        error,
+        loading,
+
+        setError,
+        handleRegister,
+        handleLogin,
+        checkAuth,
+        logout,
+        handleLogout
+    }}>
+        { children }
+    </authContext.Provider>
+  )
 }
 
 export default AuthContextProvider

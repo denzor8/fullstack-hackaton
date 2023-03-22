@@ -16,6 +16,7 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import MarketPage from './pages/MarketPage/MarketPage';
 import AddProduct from './components/AddProduct/AddProduct';
 import TweetsLogic from '../src/components/TweetsLogic/TweetsLogic'
+import DetailsPage from './pages/DetailsPage/DetailsPage';
 
 
 // store pages
@@ -75,6 +76,11 @@ const MainRoutes = () => {
 			element: <CheckAdmin />,
 			id: 9,
 		},
+		{
+			link: '/details/:id',
+			element: <DetailsPage/>,
+			id: 8,
+		},
     {
       link: "/editProduct/:id",
       element: <EditProductPage />,
@@ -85,14 +91,6 @@ const MainRoutes = () => {
       element: <AddProductPage />,
       id: 11,
 		},
-    {
-      link: "/details/:id",
-      element: <ProductDetailsPage />,
-      id: 12,
-    },
-		
-
-
 	]
 	return (
 		<>
