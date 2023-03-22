@@ -123,8 +123,8 @@ const Navbar = () => {
                 alt=""
                 width={25}
                 height={22} />
-              <Typography variant="h6"  onClick={() => handleLogout(navigate)} >
-                Logout
+              <Typography variant="h6">
+                Lists
               </Typography>
             </div>
           </div>
