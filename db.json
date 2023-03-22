@@ -1239,6 +1239,14 @@
       "picture": "https://www.istore.kg/media/products/Pro-14-M1-Silver-US-1_lzqer6g.webp",
       "type": "electronics",
       "id": 160
+    },
+    {
+      "name": "test",
+      "description": "test",
+      "price": 999,
+      "picture": "test",
+      "type": "test",
+      "id": 161
     }
   ],
   "posts": [
@@ -1255,6 +1263,6 @@
           "id": 1679478212862
         }
       ]
-    }
+    },
   ]
 }
