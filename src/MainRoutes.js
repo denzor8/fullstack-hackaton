@@ -90,7 +90,12 @@ const MainRoutes = () => {
       link: "/addProduct",
       element: <AddProductPage />,
       id: 11,
-		},
+	},
+	{
+		link: "/productsDetails/:id",
+		element: <ProductDetailsPage/>,
+		id: 12,
+	},
 	]
 	return (
 		<>

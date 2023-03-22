@@ -53,7 +53,7 @@ const ProductCard = ({ item }) => {
 
       </div>
       <img
-        onClick={() => navigate(`/details/${item.id}`)}
+        onClick={() => navigate(`/productsDetails/${item.id}`)}
         width={133}
         height={112}
         src={item.picture}
