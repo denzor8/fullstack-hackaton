@@ -89,7 +89,7 @@ const Basket = () => {
               <button className="greenButton">
                 Оформить заказ
                 <IconButton color='primary' >
-                  <ArrowForwardIcon  sx={{ color: '#fff' }} />
+                  <ArrowForwardIcon sx={{color: 'fff'}} />
                 </IconButton>
               </button>
             </div>

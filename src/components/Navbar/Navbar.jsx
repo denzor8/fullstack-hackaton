@@ -23,6 +23,7 @@ import { useProfile } from '../../contexts/profileContext';
 import { useAuth } from '../../contexts/authContext';
 
 
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [visibleAddTweet, setVisibleAddTweet] = React.useState(false);
