@@ -9,7 +9,7 @@ import ModalProduct from '../ModalProduct/ModalProduct'
 
 
 const ProductList = () => {
-  const {getPosts, posts, getProducts, productsDb} = usePosts()
+  const { getPosts, posts, getProducts, productsDb } = usePosts()
 
   useEffect(() => {
     getPosts()
@@ -22,23 +22,23 @@ const ProductList = () => {
 
   return (
     <>
-    <div className="card">
-    <TweetsLogic/>
-    {posts?.map(item => ( 
-        <>
-        <div key={item.id} >
-          {productsDb.map((set, index) => (
-            <>
-              <ProductCard dbcard={set} card={item} key={set.id} />
-              <div style={{ display: "block"}}>
-                <ModalProduct key={index} dbcard={set} card={item} />
-              </div>
-            </>
-          ))}
-        </div>
-        </>
+      <div className="card">
+        <TweetsLogic />
+        {posts?.map(item => (
+          <>
+            <div key={item.id} >
+              {productsDb.map((set, index) => (
+                <>
+                  <ProductCard dbcard={set} card={item} key={set.id} />
+                  <div style={{ display: "block" }}>
+                    <ModalProduct key={index} dbcard={set} card={item} />
+                  </div>
+                </>
+              ))}
+            </div>
+          </>
         ))}
-        </div>
+      </div>
     </>
   )
 }

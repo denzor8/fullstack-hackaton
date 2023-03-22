@@ -1244,7 +1244,7 @@
   "posts": [
     {
       "id": 1,
-      "likes": 1,
+      "likes": 4,
       "comments": [
         {
           "item": "sdv",
@@ -1258,7 +1258,7 @@
     },
     {
       "id": 2,
-      "likes": 0,
+      "likes": 2,
       "comments": [
         {
           "item": "sdf",
